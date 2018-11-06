@@ -5,5 +5,12 @@ server:
 
 spring:
   datasource:
-    password: 1234
-    url: jdbc:mysql://localhost:3306/childdb?user=root
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5432/pizzadb
+
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: true
+    hibernate.ddl-auto: update
+    show-sql: true
