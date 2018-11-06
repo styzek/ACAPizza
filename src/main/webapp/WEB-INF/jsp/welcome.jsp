@@ -14,11 +14,6 @@ Ouailquaumme !
 </br>
 </br>
 
-<form:form id="form" method="post" action="/firstSpring/send" modelAttribute="magicKeyForm">
-            <form:label path="magicKey">Magic Key</form:label>
-            <form:input path="magicKey" />
-            <form:button >Magic Key</form:button>
-</form:form>
 
 </body>
 </html>
