@@ -18,19 +18,8 @@
 <div>
     <tiles:insertAttribute name="header" />
 </div>
-<div><tiles:insertAttribute name="menu" /></div>
-<spring:url var="localeFr" value="">
-    <spring:param name="locale" value="fr" />
-</spring:url>
+<%--<div><tiles:insertAttribute name="menu" /></div>--%>
 
-<spring:url var="localeEn" value="">
-    <spring:param name="locale" value="en" />
-</spring:url>
-
-
-<a href="${localeFr}">fr</a>
-
-<a href="${localeEn}">en</a>
 
 
 

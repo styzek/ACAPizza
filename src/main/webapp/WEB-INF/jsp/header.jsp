@@ -16,6 +16,20 @@
             </li>
 
         </ul>
+        <spring:url var="localeFr" value="">
+            <spring:param name="locale" value="fr" />
+        </spring:url>
+
+        <spring:url var="localeEn" value="">
+            <spring:param name="locale" value="en" />
+        </spring:url>
+
+        <div class="col-1">
+            <a href="${localeFr}">fr</a>
+
+            <a href="${localeEn}">en</a>
+        </div>
+
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Login" aria-label="login">
             <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="password">
