@@ -22,10 +22,6 @@ public class UserDAO {
     private UserRepository userRepository;
 
 
-//    public UserEntity save (UserEntity userEntity){
-//return userRepository.save(userEntity);
-//    }
-
     @Autowired
     private ProviderConverter providerConverter;
 
