@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/ACAPizza/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pizza's</a>
+                <a class="nav-link" href="/ACAPizza/pizza">Pizza's</a>
             </li>
 
         </ul>
@@ -35,6 +35,9 @@
             <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="password">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
         </form>
+
+        <button class="btn btn-outline-info my-2 my-sm-0 ml-1" href="#">Inscription</button>
+
     </div>
 </nav>
 

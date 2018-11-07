@@ -5,5 +5,11 @@ server:
 
 spring:
   datasource:
+    username: postgres
     password: 1234
-    url: jdbc:mysql://localhost:3306/childdb?user=root
+    url: jdbc:postgresql://localhost:5432/acapizza
+  jpa:
+    database: POSTGRESQL
+    generate-ddl: true
+    hibernate.ddl-auto: update
+    show-sql: true
