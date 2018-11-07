@@ -1,15 +1,26 @@
-package eu.busi.ACAPizza.model;
+package eu.busi.ACAPizza.dataAccess.entity;
 
+import eu.busi.ACAPizza.model.Pizza;
+
+import javax.persistence.*;
 import java.util.List;
 
-public class Ingredient {
+@Entity
+@Table(name="ingredient")
+public class IngredientEntity {
 
+    @Id
+    @Column(name="ingredientId")
     private int ingredientId;
+    @Column(name="stock")
     private int stock;
+    @Column(name="name")
     private String name;
-    List<Pizza> pizzas;
 
-    public Ingredient() {
+    @ManyToMany(mappedBy = "ingredients")
+    List<PizzaEntity> pizzas;
+
+    public IngredientEntity() {
     }
 
     public int getIngredientId() {
@@ -36,11 +47,11 @@ public class Ingredient {
         this.name = name;
     }
 
-    public List<Pizza> getPizzas() {
+    public List<PizzaEntity> getPizzas() {
         return pizzas;
     }
 
-    public void setPizzas(List<Pizza> pizzas) {
+    public void setPizzas(List<PizzaEntity> pizzas) {
         this.pizzas = pizzas;
     }
 }

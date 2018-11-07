@@ -1,33 +1,46 @@
-package eu.busi.ACAPizza.model;
+package eu.busi.ACAPizza.dataAccess.entity;
 
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
 
-public class User implements Serializable {
+@Entity
+@Table(name="client")
+public class UserEntity {
 
 
+    @Id
+    @Column(name="userId")
     private int userId;
+    @Column(name="firstName")
     private String firstName;
+    @Column(name="lastName")
     private String lastName;
+    @Column(name="adress")
     private String adress;
+    @Column(name="zipCode")
     private int zipCode;
+    @Column(name="email")
     private String email;
+    @Column(name="password")
     private String password;
+    @Column(name="phone")
     private String phone;
 
+    @OneToMany(mappedBy ="client", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<OrderEntity> orders;
 
-    private List<Order> orders;
-
+    @Column(name="authorities")
     private String authorities ;
+    @Column(name="non_expired")
     private Boolean non_expired ;
+    @Column(name="non_locked")
     private Boolean non_locked ;
+    @Column(name="credentials_non_expired")
     private Boolean credentials_non_expired ;
+    @Column(name="enabled")
     private Boolean enabled ;
 
-    public User () {}
-
-
+    public UserEntity() {}
 
     public int getUserId() {
         return userId;
@@ -61,14 +74,6 @@ public class User implements Serializable {
         this.adress = adress;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public int getZipCode() {
         return zipCode;
     }
@@ -85,6 +90,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -93,11 +106,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<Order> getOrders() {
+    public List<OrderEntity> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(List<OrderEntity> orders) {
         this.orders = orders;
     }
 
