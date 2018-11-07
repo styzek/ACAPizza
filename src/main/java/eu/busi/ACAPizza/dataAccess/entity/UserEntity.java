@@ -2,6 +2,7 @@ package eu.busi.ACAPizza.dataAccess.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="client")
@@ -41,12 +42,30 @@ public class UserEntity {
     @Column(name="enabled")
     private Boolean enabled ;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="user_role",
+            joinColumns = {@JoinColumn(name = "fk_user",referencedColumnName = "userId")},
+            inverseJoinColumns = {@JoinColumn(name = "fk_role",referencedColumnName = "role")}
+
+    )
+    private Set<RoleEntity> roles;
+
+
     public UserEntity() {}
 
     public UserEntity(int userId, String firstName, String lastName) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
     }
 
     public int getUserId() {
