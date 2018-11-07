@@ -21,7 +21,7 @@ public class PizzaListController {
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model){
 
-        userDAO.save( new UserEntity(1,"Konrad","Wysk"));
+        //userDAO.save( new UserEntity(1,"Konrad","Wysk"));
         return "integrated:pizzaList";
     }
 

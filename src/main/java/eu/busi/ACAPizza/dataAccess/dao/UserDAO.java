@@ -11,9 +11,8 @@ public class UserDAO {
     @Autowired
     private UserRepository userRepository;
 
-    public UserEntity save (UserEntity userEntity){
-
-return userRepository.save(userEntity);
-    }
+//    public UserEntity save (UserEntity userEntity){
+//return userRepository.save(userEntity);
+//    }
 
 }
