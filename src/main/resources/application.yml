@@ -7,7 +7,7 @@ spring:
   datasource:
     username: postgres
     password: 1234
-    url: jdbc:postgresql://localhost:5432/acapizza
+    url: jdbc:postgresql://localhost:5432/pizzadb
   jpa:
     database: POSTGRESQL
     generate-ddl: true
