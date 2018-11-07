@@ -36,8 +36,8 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
         </form>
 
-        <button class="btn btn-outline-info my-2 my-sm-0 ml-1" href="#">Inscription</button>
 
+        <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/inscription" role="button">Inscription</a>
     </div>
 </nav>
 
