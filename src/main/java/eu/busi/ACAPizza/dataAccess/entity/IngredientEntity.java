@@ -17,7 +17,6 @@ public class IngredientEntity {
     @Column(name="name")
     private String name;
 
-
     @ManyToMany(mappedBy = "ingredients")
     List<PizzaEntity> pizzas;
 

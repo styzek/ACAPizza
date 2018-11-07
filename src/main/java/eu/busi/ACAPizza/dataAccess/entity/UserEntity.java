@@ -23,6 +23,8 @@ public class UserEntity {
     private String email;
     @Column(name="password")
     private String password;
+    @Column(name="phone")
+    private String phone;
 
     @OneToMany(mappedBy ="client", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<OrderEntity> orders;
@@ -86,6 +88,14 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {

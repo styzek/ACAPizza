@@ -1,10 +1,13 @@
 package eu.busi.ACAPizza.model;
 
+import java.util.List;
+
 public class Ingredient {
 
     private int ingredientId;
     private int stock;
     private String name;
+    List<Pizza> pizzas;
 
     public Ingredient() {
     }
@@ -33,4 +36,11 @@ public class Ingredient {
         this.name = name;
     }
 
+    public List<Pizza> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
 }

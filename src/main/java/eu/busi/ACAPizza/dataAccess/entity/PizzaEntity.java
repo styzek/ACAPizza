@@ -14,8 +14,13 @@ public class PizzaEntity {
     private int pizzaId;
     @Column(name="description")
     private String description;
+
+    private String size;
+
     @Column(name="price")
     private float price;
+
+    private boolean iscomposed;
 
     @OneToMany(mappedBy ="pizza", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<OrderPizzaEntity>orders;
@@ -69,5 +74,21 @@ public class PizzaEntity {
 
     public void setOrders(List<OrderPizzaEntity> orders) {
         this.orders = orders;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public boolean isIscomposed() {
+        return iscomposed;
+    }
+
+    public void setIscomposed(boolean iscomposed) {
+        this.iscomposed = iscomposed;
     }
 }

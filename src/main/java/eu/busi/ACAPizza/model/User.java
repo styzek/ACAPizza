@@ -14,6 +14,8 @@ public class User implements Serializable {
     private int zipCode;
     private String email;
     private String password;
+    private String phone;
+
 
     private List<Order> orders;
 
@@ -24,6 +26,8 @@ public class User implements Serializable {
     private Boolean enabled ;
 
     public User () {}
+
+
 
     public int getUserId() {
         return userId;
@@ -55,6 +59,14 @@ public class User implements Serializable {
 
     public void setAdress(String adress) {
         this.adress = adress;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getZipCode() {

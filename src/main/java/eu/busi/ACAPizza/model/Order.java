@@ -3,29 +3,30 @@ package eu.busi.ACAPizza.model;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 public class Order {
 
-    private int orderId;
-    private int userId;
+    private User client;
     private LocalDateTime date;
+    List<OrderPizza> pizzas;
 
     public Order() {}
 
-    public int getOrderId() {
-        return orderId;
+    public User getClient() {
+        return client;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setClient(User client) {
+        this.client = client;
     }
 
-    public int getUserId() {
-        return userId;
+    public List<OrderPizza> getPizzas() {
+        return pizzas;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setPizzas(List<OrderPizza> pizzas) {
+        this.pizzas = pizzas;
     }
 
     public LocalDateTime getDate() {
