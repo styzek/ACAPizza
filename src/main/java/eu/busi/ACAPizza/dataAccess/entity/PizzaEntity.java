@@ -10,8 +10,13 @@ import java.util.List;
 public class PizzaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="pizzaId")
     private int pizzaId;
+
+    @Column(name="name")
+    private String name;
+
     @Column(name="description")
     private String description;
 
@@ -42,6 +47,14 @@ public class PizzaEntity {
 
     public void setPizzaId(int pizzaId) {
         this.pizzaId = pizzaId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

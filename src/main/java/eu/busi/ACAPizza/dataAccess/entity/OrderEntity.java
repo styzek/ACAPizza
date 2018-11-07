@@ -10,6 +10,7 @@ public class OrderEntity {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="orderId")
     private int orderId;
 

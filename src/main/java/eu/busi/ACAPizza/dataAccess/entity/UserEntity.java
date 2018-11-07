@@ -10,6 +10,7 @@ public class UserEntity {
 
     @Id
     @Column(name="userId")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
     @Column(name="firstName")
     private String firstName;
@@ -41,6 +42,12 @@ public class UserEntity {
     private Boolean enabled ;
 
     public UserEntity() {}
+
+    public UserEntity(int userId, String firstName, String lastName) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public int getUserId() {
         return userId;

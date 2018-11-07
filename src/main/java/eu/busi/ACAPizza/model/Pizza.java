@@ -5,12 +5,10 @@ import java.util.List;
 public class Pizza {
 
 
+    private String name;
     private String description;
-
     private String size;
-
     private float price;
-
     private boolean iscomposed;
 
     private List<OrderPizza> orders;
@@ -18,6 +16,14 @@ public class Pizza {
     private List<Ingredient> ingredients;
 
     public Pizza() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

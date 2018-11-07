@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class OrderPizzaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
 

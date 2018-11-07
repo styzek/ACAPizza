@@ -11,6 +11,7 @@ public class IngredientEntity {
 
     @Id
     @Column(name="ingredientId")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int ingredientId;
     @Column(name="stock")
     private int stock;
