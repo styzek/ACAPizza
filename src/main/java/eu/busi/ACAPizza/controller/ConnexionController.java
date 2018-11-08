@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value="/connexion")
+@RequestMapping(value="/connection")
 @SessionAttributes({Constants.CURRENT_USER})
 public class ConnexionController {
 

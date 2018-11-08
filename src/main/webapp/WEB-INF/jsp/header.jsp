@@ -35,7 +35,7 @@
             <a href="${localeEn}">en</a>
         </div>
 
-        <form:form id="form" method="post" action="/ACAPizza/home/connect" modelAttribute="userForm">
+        <%--<form:form id="form" method="post" action="/ACAPizza/home/connect" modelAttribute="userForm">--%>
 
             <%--<form:input path="email" class="form-control mr-sm-2" type="email" placeholder="Email" />--%>
             <%--<form:label for="inputEmail" path="email">Email</form:label>--%>
@@ -53,8 +53,9 @@
             <%--<form:button >ok</form:button>--%>
 
 
-        </form:form>
+        <%--</form:form>--%>
 
+        <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/connection" role="button">Connection</a>
 
         <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/inscription" role="button">Inscription</a>
     </div>
