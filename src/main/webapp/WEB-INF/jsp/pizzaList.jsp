@@ -1,102 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="include/importTags.jsp"%>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<tiles:insertAttribute name = "main-content" />
 
-    <div>
-        <div>
-        <div class="card-deck">
-            <div class="card">
+<!-- Page Heading -->
+<h1 class="my-4">Nos Pizza
+    <%--<small>Secondary Text</small>--%>
+</h1>
 
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+<c:forEach var="pizzas"  items="${pizzas}" >
+<!-- Project One -->
 
-                </div>
-            </div>
-            <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-
-                </div>
-            </div>
-            <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-
-                </div>
-            </div>
-            <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-
-                </div>
-            </div>
-            <div class="card">
-
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-
-                </div>
-            </div>
-        </div>
-            <div class="mt-2">
-                <div class="card-deck">
-                    <div class="card">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-                        </div>
-                    </div>
-                    <div class="card">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-
-                        </div>
-                    </div>
-                    <div class="card">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-
-                        </div>
-                    </div>
-                    <div class="card">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-
-                        </div>
-                    </div>
-                    <div class="card">
-
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-
-                        </div>
-                    </div>
-                </div>
-        </div>
+<div class="row">
+    <div class="col-md-4">
+        <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/400x200" alt="">
+        </a>
     </div>
+    <div class="col-md-5">
+       <h3>${pizzas.name}</h3>
+        <p>Description : ${pizzas.description}</p>
+        <h4>Prix : ${pizzas.price} €</h4>
+
     </div>
-</body>
-</html>
+    <div class="col-md-3">
+        <a class="btn btn-primary float-right my-5" href="#">Ajouter au panier</a>
+    </div>
+</div>
+
+    <!-- /.row -->
+    <hr>
+
+</c:forEach>
+
+
+</div>
+<!-- /.container -->
