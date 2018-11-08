@@ -4,6 +4,7 @@ import eu.busi.ACAPizza.model.Ingredient;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name="pizza")
@@ -25,6 +26,7 @@ public class PizzaEntity {
     @Column(name="price")
     private float price;
 
+
     private boolean iscomposed;
 
     @OneToMany(mappedBy ="pizza", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
@@ -38,6 +40,16 @@ public class PizzaEntity {
 
     )
     private List<IngredientEntity> ingredients;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="pizza_category",
+            joinColumns = {@JoinColumn(name = "fk_pizzaId",referencedColumnName = "pizzaId")},
+            inverseJoinColumns = {@JoinColumn(name = "fk_categoryId",referencedColumnName = "name")}
+
+    )
+    private List<CategoryEntity> categories;
+
 
     public PizzaEntity() {}
 
@@ -103,5 +115,13 @@ public class PizzaEntity {
 
     public void setIscomposed(boolean iscomposed) {
         this.iscomposed = iscomposed;
+    }
+
+    public List<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<CategoryEntity> categories) {
+        this.categories = categories;
     }
 }

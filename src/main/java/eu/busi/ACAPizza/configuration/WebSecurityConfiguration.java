@@ -20,10 +20,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    //private static final String LOGIN_REQUEST ="/login";
-    private static final String[] AUTHORIZED_REQUEST_ANYBODY = new String []{"/home",};
-    private static final String[] AUTHORIZED_REQUEST_ADMIN = new String []{"/admin","/inscription"};
-    private static final String[] AUTHORIZED_REQUEST_USER = new String []{"/pizza"};
+//    private static final String LOGIN_REQUEST ="/login";
+    private static final String[] AUTHORIZED_REQUEST_ANYBODY = new String []{"/home", "/pizza", "/inscription", "/inscription/send"};
+    private static final String[] AUTHORIZED_REQUEST_ADMIN = new String []{"/admin"};
+    private static final String[] AUTHORIZED_REQUEST_USER = new String []{"/login"};
 
 
 
@@ -65,11 +65,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler())
-                //.loginPage(LOGIN_REQUEST)
+//                .loginPage(LOGIN_REQUEST)
                 .permitAll()
 
                 .and()
                 .logout()
+                .logoutSuccessUrl("/home")
                 .permitAll();
     }
 

@@ -34,38 +34,15 @@
 
             <a href="${localeEn}">en</a>
         </div>
+        <sec:authorize access="!isAuthenticated()">
+            <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/home/connection" role="button">Connection</a>
 
-
-        <form class="form-inline my-2 my-lg-0" method="post" action="/ACAPizza/home/connect">
-            <input class="form-control mr-sm-2" type="text" placeholder="Login" aria-label="login">
-            <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="password">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
-        </form>
-
-        <%--<form:form id="form" method="post" action="/ACAPizza/home/connect" modelAttribute="userForm">--%>
-
-            <%--<form:input path="email" class="form-control mr-sm-2" type="email" placeholder="Email" />--%>
-            <%--<form:label for="inputEmail" path="email">Email</form:label>--%>
-            <%--<form:input path="email" type="email" class="form-control" id="inputEmail" placeholder="Email"/>--%>
-
-            <%--<form:input path="password" class="form-control mr-sm-2" type="password" placeholder="Password" />--%>
-            <%--<form:label path="password" for="inputPassword" >Password</form:label>--%>
-            <%--<form:input path="password" type="password" class="form-control" id="inputPassword" placeholder="Password" />--%>
-
-            <%--<form:button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</form:button>--%>
-
-
-            <%--<form:label path="email">email</form:label>--%>
-            <%--<form:input path="email" />--%>
-            <%--<form:button >ok</form:button>--%>
-
-
-        <%--</form:form>--%>
-
-
-        <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/connection" role="button">Connection</a>
-
-        <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/inscription" role="button">Inscription</a>
+            <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/inscription" role="button">Inscription</a>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <sec:authentication property="principal.username"/>
+            <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/logout" role="button">Logout</a>
+        </sec:authorize>
     </div>
 </nav>
 
