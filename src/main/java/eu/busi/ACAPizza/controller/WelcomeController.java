@@ -34,18 +34,29 @@ public class WelcomeController {
         return "integrated:welcome";
     }
 
-    @RequestMapping(value="/connect", method = RequestMethod.POST)
-    public String getFormData (Model model, @Valid @ModelAttribute(value="userForm") UserForm user){
+    @RequestMapping(value = "/connection", method = RequestMethod.GET)
+    public String connect (Model model){
 
-
-        UserEntity user1 = userDAO.getUser(user.getEmail(), user.getPassword());
-
-        if(user1 != null) {
-            return "redirect:/pizza";
-        }
-
-        return "/WEB-INF/jsp/keyError.jsp";
+        return "redirect:/home";
     }
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout (Model model){
+
+        return "integrated:home";
+    }
+
+//    @RequestMapping(value="/connect", method = RequestMethod.POST)
+//    public String getFormData (Model model, @Valid @ModelAttribute(value="userForm") UserForm user){
+//
+//
+//        UserEntity user1 = userDAO.getUser(user.getEmail(), user.getPassword());
+//
+//        if(user1 != null) {
+//            return "redirect:/pizza";
+//        }
+//
+//        return "/WEB-INF/jsp/keyError.jsp";
+//    }
 
 
 }

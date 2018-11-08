@@ -32,28 +32,17 @@ public class ConnexionController {
 
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home (Model model, @Valid @ModelAttribute(value="userForm") UserForm user){
+    public String home (Model model){
 
-            UserEntity user1 = userDAO.getUser(user.getEmail(), user.getPassword());
+                return "integrated:login";
 
-            if(user1 != null) {
-                return "redirect:/pizza";
-            }
-
-        return "/WEB-INF/jsp/keyError.jsp";
 
     }
 
-    @RequestMapping(value="/connect", method = RequestMethod.POST)
+    @RequestMapping(value="/login", method = RequestMethod.POST)
     public String getFormData (Model model, @Valid @ModelAttribute(value="userForm") UserForm user){
 
+                return "redirect:/home";
 
-            UserEntity user1 = userDAO.getUser(user.getEmail(), user.getPassword());
-
-            if(user1 != null) {
-                return "redirect:/pizza";
-            }
-
-        return "/WEB-INF/jsp/keyError.jsp";
     }
 }
