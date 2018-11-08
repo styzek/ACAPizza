@@ -18,14 +18,14 @@
 <div>
     <tiles:insertAttribute name="header" />
 </div>
-<%--<div><tiles:insertAttribute name="menu" /></div>--%>
+<%--<div><tiles:insertAttribute username="menu" /></div>--%>
 
 
 
 
 <div class="container">
 
-    <%--<div style="float:left;padding:10px;width:15%;"><tiles:insertAttribute name="menu" /></div>--%>
+    <%--<div style="float:left;padding:10px;width:15%;"><tiles:insertAttribute username="menu" /></div>--%>
 
     <div><tiles:insertAttribute name="main-content" /></div>
 </div>

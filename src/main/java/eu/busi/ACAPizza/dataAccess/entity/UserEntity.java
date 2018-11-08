@@ -1,20 +1,21 @@
 package eu.busi.ACAPizza.dataAccess.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name="client")
-public class UserEntity {
-
+public class UserEntity implements UserDetails, Serializable {
 
     @Id
-    @Column(name="userId")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int userId;
-    @Column(name="firstName")
-    private String firstName;
+    @Column(name="username")
+    private String username;
     @Column(name="lastName")
     private String lastName;
     @Column(name="adress")
@@ -31,21 +32,19 @@ public class UserEntity {
     @OneToMany(mappedBy ="client", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<OrderEntity> orders;
 
-    @Column(name="authorities")
-    private String authorities ;
     @Column(name="non_expired")
-    private Boolean non_expired ;
+    private Boolean accountNonExpired ;
     @Column(name="non_locked")
-    private Boolean non_locked ;
+    private Boolean accountNonLocked ;
     @Column(name="credentials_non_expired")
-    private Boolean credentials_non_expired ;
+    private Boolean credentialsNonExpired ;
     @Column(name="enabled")
-    private Boolean enabled ;
+    private Boolean enable ;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name="user_role",
-            joinColumns = {@JoinColumn(name = "fk_user",referencedColumnName = "userId")},
+            joinColumns = {@JoinColumn(name = "fk_user",referencedColumnName = "username")},
             inverseJoinColumns = {@JoinColumn(name = "fk_role",referencedColumnName = "role")}
 
     )
@@ -54,11 +53,6 @@ public class UserEntity {
 
     public UserEntity() {}
 
-    public UserEntity(int userId, String firstName, String lastName) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 
     public Set<RoleEntity> getRoles() {
         return roles;
@@ -68,20 +62,11 @@ public class UserEntity {
         this.roles = roles;
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getLastName() {
@@ -124,13 +109,7 @@ public class UserEntity {
         this.phone = phone;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public List<OrderEntity> getOrders() {
         return orders;
@@ -140,43 +119,59 @@ public class UserEntity {
         this.orders = orders;
     }
 
-    public String getAuthorities() {
-        return authorities;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
     }
 
-    public void setAuthorities(String authorities) {
-        this.authorities = authorities;
+
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public Boolean getNon_expired() {
-        return non_expired;
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setNon_expired(Boolean non_expired) {
-        this.non_expired = non_expired;
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
     }
 
-    public Boolean getNon_locked() {
-        return non_locked;
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
     }
 
-    public void setNon_locked(Boolean non_locked) {
-        this.non_locked = non_locked;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
     }
 
-    public Boolean getCredentials_non_expired() {
-        return credentials_non_expired;
+    @Override
+    public boolean isEnabled() {
+        return enable;
+    }
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
-    public void setCredentials_non_expired(Boolean credentials_non_expired) {
-        this.credentials_non_expired = credentials_non_expired;
-    }
 
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
 }

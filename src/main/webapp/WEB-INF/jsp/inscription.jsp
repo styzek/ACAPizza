@@ -22,8 +22,8 @@
                 <form:input path="lastName" type="text" class="form-control" id="inputLastname" placeholder="nom" />
              </div>
             <div class="form-group col-md-6">
-                <form:label path="firstName" for="inputFirstname">Prenom</form:label>
-                <form:input path="firstName" type="text" class="form-control" id="inputFirstname" placeholder="prenom" />
+                <form:label path="username" for="inputFirstname">Prenom</form:label>
+                <form:input path="username" type="text" class="form-control" id="inputFirstname" placeholder="prenom" />
             </div>
 
         </div>

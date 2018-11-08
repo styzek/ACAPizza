@@ -18,7 +18,7 @@ public class OrderEntity {
     private LocalDateTime date;
 
     @ManyToOne
-    @JoinColumn(name = "fk_client",referencedColumnName = "userId")
+    @JoinColumn(name = "fk_client",referencedColumnName = "username")
     private UserEntity client;
 
     @OneToMany(mappedBy ="order", cascade = CascadeType.ALL,fetch = FetchType.EAGER)

@@ -30,7 +30,7 @@
             <a href="${localeEn}">en</a>
         </div>
 
-        <form class="form-inline my-2 my-lg-0">
+        <form class="form-inline my-2 my-lg-0" method="post" action="/ACAPizza/home/connect">
             <input class="form-control mr-sm-2" type="text" placeholder="Login" aria-label="login">
             <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="password">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>

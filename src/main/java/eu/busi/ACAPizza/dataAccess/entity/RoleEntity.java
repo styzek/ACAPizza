@@ -3,15 +3,17 @@ package eu.busi.ACAPizza.dataAccess.entity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
 @Table(name="role")
-public class RoleEntity implements GrantedAuthority {
+public class RoleEntity implements GrantedAuthority, Serializable {
 
     @Id
     @Column(name = "role")
    private String role;
+
 
    @ManyToMany(mappedBy = "roles")
     Collection<UserEntity> users;
@@ -19,10 +21,13 @@ public class RoleEntity implements GrantedAuthority {
     public RoleEntity() {
     }
 
+    public RoleEntity(String role) {
+        this.role = role;
+    }
 
     @Override
     public String getAuthority() {
-        return null;
+        return role;
     }
 
     public String getRole() {

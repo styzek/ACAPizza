@@ -1,14 +1,13 @@
 package eu.busi.ACAPizza.model;
 
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
 
 public class User implements Serializable {
 
 
-    private int userId;
-    private String firstName;
+
+    private String username;
     private String lastName;
     private String adress;
     private int zipCode;
@@ -29,20 +28,12 @@ public class User implements Serializable {
 
 
 
-    public int getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getLastName() {
