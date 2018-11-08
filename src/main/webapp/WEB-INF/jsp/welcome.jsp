@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-<tiles:insertAttribute name = "main-content" />
+<%--<tiles:insertAttribute name = "main-content" />--%>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Bienvenue sur ACAPizza</h1>

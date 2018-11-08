@@ -1,4 +1,4 @@
-
+<%@ include file="include/importTags.jsp"%>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">ACAPizza</a>
@@ -14,6 +14,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/ACAPizza/pizza">Pizza's</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/ACAPizza/panier">Panier</a>
+            </li>
 
         </ul>
         <spring:url var="localeFr" value="">
@@ -23,6 +26,8 @@
         <spring:url var="localeEn" value="">
             <spring:param name="locale" value="en" />
         </spring:url>
+        
+
 
         <div class="col-1">
             <a href="${localeFr}">fr</a>
@@ -30,12 +35,35 @@
             <a href="${localeEn}">en</a>
         </div>
 
+
         <form class="form-inline my-2 my-lg-0" method="post" action="/ACAPizza/home/connect">
             <input class="form-control mr-sm-2" type="text" placeholder="Login" aria-label="login">
             <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="password">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
         </form>
 
+        <%--<form:form id="form" method="post" action="/ACAPizza/home/connect" modelAttribute="userForm">--%>
+
+            <%--<form:input path="email" class="form-control mr-sm-2" type="email" placeholder="Email" />--%>
+            <%--<form:label for="inputEmail" path="email">Email</form:label>--%>
+            <%--<form:input path="email" type="email" class="form-control" id="inputEmail" placeholder="Email"/>--%>
+
+            <%--<form:input path="password" class="form-control mr-sm-2" type="password" placeholder="Password" />--%>
+            <%--<form:label path="password" for="inputPassword" >Password</form:label>--%>
+            <%--<form:input path="password" type="password" class="form-control" id="inputPassword" placeholder="Password" />--%>
+
+            <%--<form:button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</form:button>--%>
+
+
+            <%--<form:label path="email">email</form:label>--%>
+            <%--<form:input path="email" />--%>
+            <%--<form:button >ok</form:button>--%>
+
+
+        <%--</form:form>--%>
+
+
+        <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/connection" role="button">Connection</a>
 
         <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/inscription" role="button">Inscription</a>
     </div>

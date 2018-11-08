@@ -11,4 +11,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserRepository extends JpaRepository<UserEntity,String> {
     UserEntity findByUsername(String username);
 
+
 }
