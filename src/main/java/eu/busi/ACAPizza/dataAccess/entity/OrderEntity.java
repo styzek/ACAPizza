@@ -1,5 +1,7 @@
 package eu.busi.ACAPizza.dataAccess.entity;
 
+import org.springframework.context.annotation.Scope;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
