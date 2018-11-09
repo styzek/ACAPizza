@@ -5,6 +5,7 @@ import java.util.List;
 public class Pizza {
 
 
+    private int pizzaId;
     private String name;
     private String description;
     private String size;
@@ -82,5 +83,13 @@ public class Pizza {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+
+    public int getPizzaId() {
+        return pizzaId;
+    }
+
+    public void setPizzaId(int pizzaId) {
+        this.pizzaId = pizzaId;
     }
 }

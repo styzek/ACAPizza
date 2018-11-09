@@ -18,7 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 //    private static final String LOGIN_REQUEST ="/login";
-    private static final String[] AUTHORIZED_REQUEST_ANYBODY = new String []{"/panier", "/home", "/pizza", "/inscription", "/inscription/send"};
+    private static final String[] AUTHORIZED_REQUEST_ANYBODY = new String []{"/panier", "/add", "/pizza/add", "/home",
+                                                                                "/pizza", "/inscription", "/inscription/send"};
+
     private static final String[] AUTHORIZED_REQUEST_ADMIN = new String []{"/admin"};
     private static final String[] AUTHORIZED_REQUEST_USER = new String []{"/login"};
 

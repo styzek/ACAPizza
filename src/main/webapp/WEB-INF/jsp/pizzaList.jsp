@@ -5,8 +5,9 @@
 <h1 class="my-4">Nos Pizza
     <%--<small>Secondary Text</small>--%>
 </h1>
+<form:form method="post" action="/ACAPizza/pizza/add" modelAttribute="pizza">
 
-<c:forEach var="pizzas"  items="${pizzas}" >
+<c:forEach var="pizza"  items="${pizzas}" >
 <!-- Project One -->
 
 <div class="row">
@@ -16,9 +17,9 @@
         </a>
     </div>
     <div class="col-md-2">
-       <h3>${pizzas.name}</h3>
-        <p>Description : ${pizzas.description}</p>
-        <h4>Prix : ${pizzas.price} €</h4>
+       <h3>${pizza.name}</h3>
+        <p>Description : ${pizza.description}</p>
+        <h4>Prix : ${pizza.price} €</h4>
 
 
 
@@ -27,16 +28,18 @@
         <div class="mt-4">
         <p><u>Ingredients :</u></p>
 
-        <c:forEach var="ingredient" items="${pizzas.ingredients}">
+        <c:forEach var="ingredient" items="${pizza.ingredients}">
            ${ingredient.name},
         </c:forEach>
         </div>
     </div>
     <div class="col-md-2">
-        <form:form method="post" action="/ACAPizza/pizza/ajout" modelAttribute="pizza">
 
-            <form:button type="submit" class="btn btn-primary float-right my-5" >Ajouter au panier</form:button>
-        </form:form>
+            <a href="pizza/add/${pizza.name}">Ajouter au panier</a>
+            <%--<form:button type="submit" >Ajouter au panier</form:button>--%>
+
+
+
     </div>
 </div>
 
@@ -44,7 +47,7 @@
     <hr>
 
 </c:forEach>
-
+</form:form>
 
 </div>
 <!-- /.container -->

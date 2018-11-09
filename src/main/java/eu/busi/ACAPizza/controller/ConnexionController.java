@@ -20,11 +20,17 @@ import javax.validation.Valid;
 @RequestMapping(value="/connection")
 @SessionAttributes({Constants.CURRENT_USER})
 public class ConnexionController {
-
-    @ModelAttribute(value = "userForm")
-    public UserForm user(){
-        return new UserForm();
+//
+//    @ModelAttribute(value = "userForm")
+//    public UserForm user(){
+//        return new UserForm();
+//    }
+//
+    @ModelAttribute(Constants.CURRENT_USER)
+    public User user(){
+        return new User();
     }
+
 
     @Autowired
     public UserDAO userDAO;

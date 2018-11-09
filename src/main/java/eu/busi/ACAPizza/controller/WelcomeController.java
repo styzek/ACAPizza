@@ -1,9 +1,11 @@
 package eu.busi.ACAPizza.controller;
 
 
+import eu.busi.ACAPizza.Constants;
 import eu.busi.ACAPizza.dataAccess.entity.UserEntity;
 import eu.busi.ACAPizza.dataAccess.dao.UserDAO;
 import eu.busi.ACAPizza.dataAccess.entity.UserEntity;
+import eu.busi.ACAPizza.model.User;
 import eu.busi.ACAPizza.model.UserForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,19 +13,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.validation.Valid;
 
 
 @Controller
 @RequestMapping(value="/home")
+@SessionAttributes({Constants.CURRENT_USER})
 public class WelcomeController {
 
+//
+//    @ModelAttribute(value = "userForm")
+//    public UserForm user(){
+//        return new UserForm();
+//    }
 
-    @ModelAttribute(value = "userForm")
-    public UserForm user(){
-        return new UserForm();
+    @ModelAttribute(Constants.CURRENT_USER)
+    public User user(){
+        return new User();
     }
+
 
     @Autowired
     public UserDAO userDAO;
@@ -36,6 +46,7 @@ public class WelcomeController {
 
     @RequestMapping(value = "/connection", method = RequestMethod.GET)
     public String connect (Model model){
+
 
         return "redirect:/home";
     }

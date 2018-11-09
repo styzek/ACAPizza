@@ -25,7 +25,7 @@ public class User implements Serializable {
     private Boolean non_locked ;
     private Boolean credentials_non_expired ;
     private Boolean enabled ;
-    private Map<Pizza,Integer> panier = new HashMap<>();
+    private Map<String,Integer> panier = new HashMap<>();
 
 
     public User () {}
@@ -88,13 +88,15 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Map<Pizza, Integer> getPanier() {
+    public Map<String, Integer> getPanier() {
         return panier;
     }
 
-    public void setPanier(Map<Pizza, Integer> panier) {
+    public void setPanier(Map<String, Integer> panier) {
         this.panier = panier;
     }
+
+
 
     public List<Order> getOrders() {
         return orders;
