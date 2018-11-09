@@ -33,7 +33,10 @@
         </div>
     </div>
     <div class="col-md-2">
-        <a class="btn btn-primary float-right my-5" href="">Ajouter au panier</a>
+        <form:form method="post" action="/ACAPizza/pizza/ajout" modelAttribute="pizza">
+
+            <form:button type="submit" class="btn btn-primary float-right my-5" >Ajouter au panier</form:button>
+        </form:form>
     </div>
 </div>
 
