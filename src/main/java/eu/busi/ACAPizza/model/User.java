@@ -1,7 +1,9 @@
 package eu.busi.ACAPizza.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User implements Serializable {
 
@@ -23,6 +25,8 @@ public class User implements Serializable {
     private Boolean non_locked ;
     private Boolean credentials_non_expired ;
     private Boolean enabled ;
+    private Map<Pizza,Integer> panier = new HashMap<>();
+
 
     public User () {}
 
@@ -82,6 +86,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Map<Pizza, Integer> getPanier() {
+        return panier;
+    }
+
+    public void setPanier(Map<Pizza, Integer> panier) {
+        this.panier = panier;
     }
 
     public List<Order> getOrders() {
