@@ -23,13 +23,6 @@ import org.springframework.web.bind.annotation.*;
 public class PizzaListController {
 
 
-
-    @ModelAttribute(Constants.CURRENT_USER)
-    public User user(){
-        return new User();
-    }
-
-
     @Autowired
     public UserDAO userDAO;
 
@@ -43,6 +36,7 @@ public class PizzaListController {
     @Autowired
     PanierService panierService;
 
+    @Autowired
     ProviderConverter providerConverter;
 
 
@@ -54,7 +48,7 @@ public class PizzaListController {
 
         model.addAttribute("pizzas", pizzaDAO.getAllPizza());
         model.addAttribute("ingredients", ingredientDAO.getAllIngredients());
-
+        model.addAttribute("user",new User());
 
         return "integrated:pizzaList";
     }
@@ -66,7 +60,7 @@ public class PizzaListController {
         PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
         Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
 //        if(panierService.findByID(pizzaId).isPresent()) {
-            panierService.add(user, pizza.getName());
+            panierService.add(user, pizza);
 
 //        panierService.add(user, pizza);
 

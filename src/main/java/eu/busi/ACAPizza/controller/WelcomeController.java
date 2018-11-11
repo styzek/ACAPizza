@@ -39,8 +39,8 @@ public class WelcomeController {
     public UserDAO userDAO;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home (Model model){
-
+    public String home (Model model,@ModelAttribute(value = Constants.CURRENT_USER) User user){
+        model.addAttribute( Constants.CURRENT_USER,user);
         return "integrated:welcome";
     }
 

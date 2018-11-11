@@ -33,14 +33,12 @@ public class PanierController {
         return new Pizza();
     }
 
-    @ModelAttribute(Constants.CURRENT_USER)
-    public User user(){
-        return new User();
-    }
+
 
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model, @ModelAttribute(value= Constants.CURRENT_USER) User user ){
 //        UserEntity user = (UserEntity)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user",user);
         model.addAttribute("panier", user.getPanier());
 //        model.addAttribute("pizza", new Pizza());
 

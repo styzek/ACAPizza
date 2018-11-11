@@ -16,18 +16,18 @@ import java.util.stream.Collectors;
 @Service
 public class PanierService {
 
-    Map<String,Integer> panierMap = new HashMap<>();
+    Map<Pizza,Integer> panierMap = new HashMap<>();
 
     ProviderConverter pro;
 
     private PizzaRepository pizzaRepository;
 
-    public void add (User user,String name){
+    public void add (User user,Pizza pizza){
 
-        if (panierMap.containsKey(name)) {
-            panierMap.replace(name, panierMap.get(name) + 1);
+        if (panierMap.containsKey(pizza)) {
+            panierMap.replace(pizza, panierMap.get(pizza) + 1);
         } else {
-            panierMap.put(name,1);
+            panierMap.put(pizza,1);
         }
         user.setPanier(panierMap);
 
