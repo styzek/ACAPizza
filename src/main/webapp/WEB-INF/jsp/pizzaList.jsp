@@ -3,9 +3,9 @@
 
 <!-- Page Heading -->
 <h1 class="my-4">Nos Pizza
-    <%--<small>Secondary Text</small>--%>
-</h1>
 
+</h1>
+<form:form method="post" action="/ACAPizza/pizza/add" modelAttribute="pizza">
 <c:forEach var="pizzas"  items="${pizzas}" >
 <!-- Project One -->
 
@@ -33,10 +33,10 @@
         </div>
     </div>
     <div class="col-md-2">
-        <form:form method="post" action="/ACAPizza/pizza/ajout" modelAttribute="pizza">
+
 
             <form:button type="submit" class="btn btn-primary float-right my-5" >Ajouter au panier</form:button>
-        </form:form>
+
     </div>
 </div>
 
@@ -44,7 +44,7 @@
     <hr>
 
 </c:forEach>
-
+</form:form>
 
 </div>
 <!-- /.container -->
