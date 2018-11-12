@@ -2,9 +2,16 @@
 <%@ include file="include/importTags.jsp"%>
 
 <!-- Page Heading -->
+
+<div class="float-right">
+    <a class="btn  btn-outline-primary my-2 my-sm-0 ml-1" href="/ACAPizza/pizzaPerso" role="button">Composer ma Pizza !</a>
+</div>
+<br>
 <h1 class="my-4">Nos Pizza
 
 </h1>
+
+
 <form:form method="post" action="/ACAPizza/pizza/add" modelAttribute="pizza">
 
 <c:forEach var="pizza"  items="${pizzas}" >

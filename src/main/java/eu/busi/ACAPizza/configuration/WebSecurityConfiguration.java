@@ -19,7 +19,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 //    private static final String LOGIN_REQUEST ="/login";
     private static final String[] AUTHORIZED_REQUEST_ANYBODY = new String []{"/panier", "/add", "/pizza/add", "/home",
-                                                                                "/pizza", "/inscription", "/inscription/send"};
+                                                                                "/pizza", "/inscription", "/inscription/send",
+                                                                                    "/pizzaPerso"};
 
     private static final String[] AUTHORIZED_REQUEST_ADMIN = new String []{"/admin"};
     private static final String[] AUTHORIZED_REQUEST_USER = new String []{"/login"};
@@ -50,6 +51,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/images/**",
                 "/fonts/**",
                 "/scripts/**",
+                "/js/**",
         };
 
         http.csrf().disable(); // désactiver car non necessaire

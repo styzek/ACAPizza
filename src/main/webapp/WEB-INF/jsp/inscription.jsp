@@ -18,11 +18,11 @@
     <div class="form-group">
         <div class="form-row">
             <div class="form-group col-md-6">
-                 <form:label path="lastName" for="inputLastname">Nom</form:label>
+                 <form:label path="lastName" for="inputLastname">Prenom</form:label>
                 <form:input path="lastName" type="text" class="form-control" id="inputLastname" placeholder="nom" />
              </div>
             <div class="form-group col-md-6">
-                <form:label path="username" for="inputFirstname">Prenom</form:label>
+                <form:label path="username" for="inputFirstname">Nom</form:label>
                 <form:input path="username" type="text" class="form-control" id="inputFirstname" placeholder="prenom" />
             </div>
 
