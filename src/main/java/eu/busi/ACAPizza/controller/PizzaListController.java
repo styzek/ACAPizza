@@ -48,7 +48,7 @@ public class PizzaListController {
 
         model.addAttribute("pizzas", pizzaDAO.getAllPizza());
         model.addAttribute("ingredients", ingredientDAO.getAllIngredients());
-        model.addAttribute("user",new User());
+//        model.addAttribute("user",new User());
 
         return "integrated:pizzaList";
     }
