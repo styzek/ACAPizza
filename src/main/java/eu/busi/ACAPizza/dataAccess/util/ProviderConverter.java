@@ -1,7 +1,9 @@
 package eu.busi.ACAPizza.dataAccess.util;
 
+import eu.busi.ACAPizza.dataAccess.entity.PizzaEntity;
 import eu.busi.ACAPizza.dataAccess.entity.RoleEntity;
 import eu.busi.ACAPizza.dataAccess.entity.UserEntity;
+import eu.busi.ACAPizza.model.Pizza;
 import eu.busi.ACAPizza.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -63,4 +65,31 @@ public class ProviderConverter {
 
         return user;
     }
+
+    public PizzaEntity pizzaModelTopizzaEntity(Pizza pizza){
+
+   PizzaEntity pizzaEntity =new PizzaEntity();
+   pizzaEntity.setName(pizza.getName());
+   pizzaEntity.setDescription(pizza.getDescription());
+   pizzaEntity.setIscomposed(pizza.isIscomposed());
+   pizzaEntity.setPrice(pizza.getPrice());
+   pizzaEntity.setPizzaId(pizza.getPizzaId());
+   pizzaEntity.setSize(pizza.getSize());
+        return pizzaEntity;
+
+    }
+
+    public Pizza pizzaEntityToPizzaModel(PizzaEntity pizzaEntity) {
+        Pizza pizza =new Pizza();
+        pizza.setName(pizzaEntity.getName());
+        pizza.setDescription(pizzaEntity.getDescription());
+        pizza.setIscomposed(pizzaEntity.isIscomposed());
+        pizza.setPrice(pizzaEntity.getPrice());
+        pizza.setPizzaId(pizzaEntity.getPizzaId());
+        pizza.setSize(pizzaEntity.getSize());
+        return pizza;
+    }
+
+
+
 }

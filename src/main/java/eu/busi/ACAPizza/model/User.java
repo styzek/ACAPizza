@@ -26,7 +26,15 @@ public class User implements Serializable {
     private Boolean credentials_non_expired ;
     private Boolean enabled ;
     private Map<Pizza,Integer> panier = new HashMap<>();
+    private Panier panier2;
 
+    public Panier getPanier2() {
+        return panier2;
+    }
+
+    public void setPanier2(Panier panier2) {
+        this.panier2 = panier2;
+    }
 
     public User () {}
 

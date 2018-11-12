@@ -1,2 +1,8 @@
 <hr/>
-<p>mouahaha</p>
+<div class="">
+    <div>
+        <p><i>~ Copyright ~</i></p>
+
+    </div>
+
+</div>
