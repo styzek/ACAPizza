@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                     <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                        <h6><strong>${pizza.key.price} <span class="text-muted">x</span></strong></h6>
+                        <h6><strong>${pizza.key.price} euro <span class="text-muted">x</span></strong></h6>
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="quantity">
@@ -47,9 +47,9 @@
                         </div>
                     </div>
                     <div class="col-2 col-sm-2 col-md-2 text-right">
-                        <button type="button" class="btn btn-outline-danger btn-xs">
+                        <a type="button" class="btn btn-outline-danger btn-xs" href="panier/remove/${pizza.key.name}">
                             <i class="fa fa-trash" aria-hidden="true"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -67,17 +67,17 @@
             <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
                 <div class="row">
                     <div class="col-6">
-                        <input type="text" class="form-control" placeholder="cupone code">
+                        <input type="text" class="form-control" placeholder="coupon code">
                     </div>
                     <div class="col-6">
-                        <input type="submit" class="btn btn-default" value="Use cupone">
+                        <input type="submit" class="btn btn-default" value="Use coupon">
                     </div>
                 </div>
             </div>
             <div class="pull-right" style="margin: 10px">
                 <a href="" class="btn btn-success pull-right">Checkout</a>
                 <div class="pull-right" style="margin: 5px">
-                    Total price: <b>${panier.prixTotal}</b>
+                    Total price: <b>${prixTotal}</b>
                 </div>
             </div>
         </div>

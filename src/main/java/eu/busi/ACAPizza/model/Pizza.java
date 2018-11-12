@@ -1,6 +1,7 @@
 package eu.busi.ACAPizza.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Pizza {
 
@@ -19,6 +20,13 @@ public class Pizza {
     private List<Category> categories;
 
     public Pizza() {
+    }
+
+    @Override
+    public String toString() {
+        return "Pizza{" +
+                "name='" + name + '\'' +
+                '}';
     }
 
     public String getName() {
@@ -91,5 +99,19 @@ public class Pizza {
 
     public void setPizzaId(int pizzaId) {
         this.pizzaId = pizzaId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pizza pizza = (Pizza) o;
+        return pizzaId == pizza.pizzaId &&
+                Objects.equals(name, pizza.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pizzaId, name);
     }
 }
