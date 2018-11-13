@@ -7,6 +7,7 @@ public class Ingredient {
     private int ingredientId;
     private int stock;
     private String name;
+    private boolean isCheckd;
     List<Pizza> pizzas;
 
     public Ingredient() {
@@ -42,5 +43,13 @@ public class Ingredient {
 
     public void setPizzas(List<Pizza> pizzas) {
         this.pizzas = pizzas;
+    }
+
+    public boolean isCheckd() {
+        return isCheckd;
+    }
+
+    public void setCheckd(boolean checkd) {
+        isCheckd = checkd;
     }
 }

@@ -15,6 +15,7 @@
 <form:form method="post" action="/ACAPizza/pizza/add" modelAttribute="pizza">
 
 <c:forEach var="pizza"  items="${pizzas}" >
+    <c:if test="${pizza.iscomposed==false}">
     <div>
         <div>
 <!-- Project One -->
@@ -50,7 +51,7 @@
 </div>
 
     <hr>
-
+    </c:if>
 </c:forEach>
 </form:form>
 

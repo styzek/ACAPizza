@@ -14,23 +14,20 @@ Nous incluons dans chaque composition : la pate, la sauce tomate et la mozza
 <br>
 
 <form:form method="post" action="/ACAPizza/pizzaPerso/send"  modelAttribute="pizzaCustom">
-    <%--<form method="post" name="form_name" id="form_name">--%>
+
     <div id="checkboxgroup">
 
-        <c:forEach  var="ingredient" items="${ingredients}" varStatus="loop">
+        <c:forEach  var="ingredient" items="${ingredientList}" varStatus="loop">
             <c:if test="${!(ingredient.name == 'mozzarella' || ingredient.name == 'pate ag' || ingredient.name == 'pate sg' ||
-                                                      ingredient.name == 'sauce barbecue' || ingredient.name == 'sauce tomate')}">
+                                                     ingredient.name == 'sauce barbecue' || ingredient.name == 'sauce tomate')}">
 
-            <label class="checkbox-inline">
-            <input type="checkbox" id="Check"> ${ingredient.name}
-            </label>
+
+                <span class="checkbox"><form:checkbox path="ingredients" value="${ingredient.name}"/>${ingredient.name}</span>
+
 
                 <c:if test="${loop.index =='6'}">
                     <br>
                 </c:if>
-
-
-                    <%--<form:checkboxes path="ingredient" items="${ingredient.name}" />--%>
 
             </c:if>
 

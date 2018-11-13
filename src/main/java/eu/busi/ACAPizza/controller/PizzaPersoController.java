@@ -2,8 +2,10 @@ package eu.busi.ACAPizza.controller;
 
 import eu.busi.ACAPizza.Constants;
 import eu.busi.ACAPizza.dataAccess.dao.IngredientDAO;
+import eu.busi.ACAPizza.model.Ingredient;
 import eu.busi.ACAPizza.model.Pizza;
 import eu.busi.ACAPizza.model.User;
+import eu.busi.ACAPizza.service.PanierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,25 +16,51 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/pizzaPerso")
 @SessionAttributes({Constants.CURRENT_USER})
 public class PizzaPersoController {
 
+     static int count = 1;
+
     @Autowired
     public IngredientDAO ingredientDAO;
 
+    @Autowired
+    PanierService panierService;
+
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model){
-        model.addAttribute("ingredients", ingredientDAO.getAllIngredients());
-        model.addAttribute("pizzaCustom", new Pizza());
+        model.addAttribute("ingredientList", ingredientDAO.getAllIngredients());
+        model.addAttribute("pizzaCustom",new Pizza());
+
         return "integrated:pizzaPerso";
     }
 
 
     @RequestMapping(value="/send", method = RequestMethod.POST)
-    public String getFormData (Model model, @ModelAttribute(value=Constants.CURRENT_USER) User user,@ModelAttribute("pizzaCustom") Pizza pizza ){
+    public String getFormData (Model model, @ModelAttribute(value=Constants.CURRENT_USER) User user,@ModelAttribute("pizzaCustom") Pizza pizzaCustom  ){
+
+//        model.addAttribute("pizzaCustom", pizzaCustom);
+
+
+
+        pizzaCustom.setName("PizzaCustom"+count);
+        count++;
+        pizzaCustom.setIscomposed(true);
+        pizzaCustom.setPrice((float) 14.06);
+        panierService.addCustom(user, pizzaCustom);
+        if (pizzaCustom.getIngredients() != null)
+            System.out.println(">>>>>>>>>>>>>>>"+pizzaCustom.getIngredients().get(0));
+        else
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>foirer");
+
+
+
+
 
             return "redirect:/panier";
 

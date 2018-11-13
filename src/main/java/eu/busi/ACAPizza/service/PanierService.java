@@ -67,6 +67,26 @@ public class PanierService {
 //        return user;
 //    }
 
+
+    public void addCustom(User user, Pizza pizza) {
+
+
+        if (panierMap.containsKey(pizza.getIngredients())){
+
+            panierMap.computeIfPresent(pizza, ((pizza1, qtt) -> qtt + 1));
+
+        } else {
+            panierMap.put(pizza,1);
+        }
+        user.setPanier(panierMap);
+    }
+
+
+
+
+
+
+
     public void removeProduct(Pizza pizza) {
         if (panierMap.containsKey(pizza)) {
             if (panierMap.get(pizza) > 1)

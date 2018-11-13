@@ -15,8 +15,8 @@ public class Pizza {
 
     private List<OrderPizza> orders;
 
-    private List<Ingredient> ingredients;
-
+//    private List<Ingredient> ingredients;
+    private List<String> ingredients;
     private List<Category> categories;
 
     public Pizza() {
@@ -77,11 +77,20 @@ public class Pizza {
         this.orders = orders;
     }
 
-    public List<Ingredient> getIngredients() {
+//    public List<Ingredient> getIngredients() {
+//        return ingredients;
+//    }
+//
+//    public void setIngredients(List<Ingredient> ingredients) {
+//        this.ingredients = ingredients;
+//    }
+
+
+    public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
 

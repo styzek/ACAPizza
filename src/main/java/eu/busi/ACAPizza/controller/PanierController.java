@@ -90,7 +90,7 @@ public class PanierController {
         PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
         Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
 
-
+        System.out.println(pizza);
         panierService.removeProduct(pizza);
         return "redirect:/panier";
         }
