@@ -2,6 +2,7 @@ package eu.busi.ACAPizza.controller;
 
 import eu.busi.ACAPizza.Constants;
 import eu.busi.ACAPizza.dataAccess.dao.IngredientDAO;
+import eu.busi.ACAPizza.dataAccess.dao.PizzaDAO;
 import eu.busi.ACAPizza.model.Ingredient;
 import eu.busi.ACAPizza.model.Pizza;
 import eu.busi.ACAPizza.model.User;
@@ -30,6 +31,9 @@ public class PizzaPersoController {
     public IngredientDAO ingredientDAO;
 
     @Autowired
+    public PizzaDAO pizzaDAO;
+
+    @Autowired
     PanierService panierService;
 
     @RequestMapping(method = RequestMethod.GET)
@@ -49,6 +53,8 @@ public class PizzaPersoController {
         pizzaCustom.setIscomposed(true);
         pizzaCustom.setPrice((float) 14.06);
         panierService.addCustom(user, pizzaCustom);
+
+        pizzaDAO.save(pizzaCustom);
             return "redirect:/panier";
 
     }

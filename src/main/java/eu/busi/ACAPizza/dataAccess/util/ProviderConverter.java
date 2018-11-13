@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 //@Service
@@ -75,6 +76,8 @@ public class ProviderConverter {
    pizzaEntity.setPrice(pizza.getPrice());
    pizzaEntity.setPizzaId(pizza.getPizzaId());
    pizzaEntity.setSize(pizza.getSize());
+
+
         return pizzaEntity;
 
     }
@@ -87,6 +90,8 @@ public class ProviderConverter {
         pizza.setPrice(pizzaEntity.getPrice());
         pizza.setPizzaId(pizzaEntity.getPizzaId());
         pizza.setSize(pizzaEntity.getSize());
+        pizza.setIngredients(pizzaEntity.getIngredients().stream().map( p -> p.getName()).collect(Collectors.toList()));
+
         return pizza;
     }
 
