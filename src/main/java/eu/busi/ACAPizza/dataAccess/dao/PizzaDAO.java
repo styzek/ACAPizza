@@ -2,11 +2,13 @@ package eu.busi.ACAPizza.dataAccess.dao;
 
 import eu.busi.ACAPizza.dataAccess.entity.IngredientEntity;
 import eu.busi.ACAPizza.dataAccess.entity.PizzaEntity;
+import eu.busi.ACAPizza.dataAccess.entity.UserEntity;
 import eu.busi.ACAPizza.dataAccess.repository.IngredientRepository;
 import eu.busi.ACAPizza.dataAccess.repository.PizzaRepository;
 import eu.busi.ACAPizza.dataAccess.repository.UserRepository;
 import eu.busi.ACAPizza.dataAccess.util.ProviderConverter;
 import eu.busi.ACAPizza.model.Pizza;
+import eu.busi.ACAPizza.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,10 +50,12 @@ public class PizzaDAO {
         return ingredients;
     }
 
+
     public Pizza save(Pizza pizza) {
         PizzaEntity pizzaEntity = providerConverter.pizzaModelTopizzaEntity(pizza);
         pizzaEntity = pizzaRepository.save(pizzaEntity);
         return providerConverter.pizzaEntityToPizzaModel(pizzaEntity);
 
     }
+
 }

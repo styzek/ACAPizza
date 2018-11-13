@@ -32,10 +32,11 @@ public class PizzaPersoController {
     public IngredientDAO ingredientDAO;
 
     @Autowired
-    PanierService panierService;
+    public PizzaDAO pizzaDAO;
 
     @Autowired
-    PizzaDAO pizzaDAO;
+    PanierService panierService;
+
 
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model){
@@ -54,6 +55,7 @@ public class PizzaPersoController {
 
         pizzaCustom.setPrice((float) 14.06);
         panierService.addCustom(user, pizzaCustom);
+
         pizzaDAO.save(pizzaCustom);
             return "redirect:/panier";
 

@@ -41,6 +41,7 @@ public class WelcomeController {
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model,@ModelAttribute(value = Constants.CURRENT_USER) User user){
         model.addAttribute( Constants.CURRENT_USER,user);
+//        model.addAttribute("panier", user.getPanier());
         return "integrated:welcome";
     }
 

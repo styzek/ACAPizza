@@ -30,9 +30,17 @@
                 </div>
                 <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                     <h4 class="product-name"><strong>${pizza.key.name}</strong></h4>
-                    <h4>
-                        <small>${pizza.key.description}</small>
-                    </h4>
+                    <h5>
+                        <c:forEach var="ingredient" items="${pizza.key.ingredients}" varStatus="status">
+                            <small> ${ingredient}</small>
+                            <c:if test="${!status.last}" >
+                                ,
+                            </c:if>
+                            <c:if test="${status.last}">
+
+                            </c:if>
+                        </c:forEach>
+                    </h5>
                 </div>
                 <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                     <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">

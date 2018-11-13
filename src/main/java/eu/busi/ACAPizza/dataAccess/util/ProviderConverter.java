@@ -98,6 +98,7 @@ public class ProviderConverter {
 //        pizza.setPrice(pizzaEntits(ingredients);
         pizzaEntity.setIngredients(ingredients);
 
+
         return pizzaEntity;
 
     }
@@ -109,7 +110,9 @@ public class ProviderConverter {
         pizza.setPrice(pizzaEntity.getPrice());
    //     pizza.setPizzaId(pizzaEntity.getPizzaId());
         pizza.setSize(pizzaEntity.getSize());
+
         // pizza.setIngredients(pizzaEntity.getIngredients().stream().map(p->p.getName()).collect(Collectors.toList()));
+
         return pizza;
     }
 
