@@ -7,9 +7,7 @@
     <a class="btn  btn-outline-primary my-2 my-sm-0 ml-1" href="/ACAPizza/pizzaPerso" role="button">Composer ma Pizza !</a>
 </div>
 <br>
-<h1 class="my-4">Nos Pizza
-
-</h1>
+<h1 class="my-4">Nos Pizza</h1>
 
 
 <form:form method="post" action="/ACAPizza/pizza/add" modelAttribute="pizza">
@@ -38,8 +36,14 @@
         <div class="mt-4">
         <p><u>Ingredients :</u></p>
 
-        <c:forEach var="ingredient" items="${pizza.ingredients}">
-           ${ingredient.name},
+        <c:forEach var="ingredient" items="${pizza.ingredients}" varStatus="status">
+           ${ingredient.name}
+            <c:if test="${!status.last}" >
+                ,
+            </c:if>
+            <c:if test="${status.last}">
+
+            </c:if>
         </c:forEach>
         </div>
     </div>

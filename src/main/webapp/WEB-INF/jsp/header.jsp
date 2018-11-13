@@ -35,7 +35,7 @@
             <a href="${localeEn}">en</a>
         </div>
         <sec:authorize access="!isAuthenticated()">
-            <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/home/connection" role="button">Connection</a>
+            <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="<spring:url value='/loginPage' />" role="button">Connection</a>
 
             <a class="btn btn-outline-info my-2 my-sm-0 ml-1" href="/ACAPizza/inscription" role="button">Inscription</a>
         </sec:authorize>

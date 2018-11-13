@@ -95,6 +95,29 @@ public class PanierController {
         return "redirect:/panier";
         }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/removeOne/{pizzaName}")
+    public String removeOne (Model model, @Valid @ModelAttribute(value= Constants.CURRENT_USER) User user,
+                          final BindingResult errors, @PathVariable("pizzaName") String name){
+
+        PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
+        Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
+
+
+        panierService.removeOneProduct(pizza);
+        return "redirect:/panier";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/addOne/{pizzaName}")
+    public String addOne (Model model, @Valid @ModelAttribute(value= Constants.CURRENT_USER) User user,
+                             final BindingResult errors, @PathVariable("pizzaName") String name){
+
+        PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
+        Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
+
+
+        panierService.add(user, pizza);
+        return "redirect:/panier";
+    }
 
 
 }
