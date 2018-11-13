@@ -5,12 +5,14 @@ import eu.busi.ACAPizza.dataAccess.entity.PizzaEntity;
 import eu.busi.ACAPizza.dataAccess.repository.IngredientRepository;
 import eu.busi.ACAPizza.dataAccess.repository.PizzaRepository;
 import eu.busi.ACAPizza.dataAccess.repository.UserRepository;
+import eu.busi.ACAPizza.dataAccess.util.ProviderConverter;
 import eu.busi.ACAPizza.model.Pizza;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,6 +24,9 @@ public class PizzaDAO {
 
     @Autowired
     private IngredientRepository ingredientRepository;
+
+    @Autowired
+    ProviderConverter providerConverter;
 
     public List<PizzaEntity> getAllPizza () {
          List<PizzaEntity> pizzas = pizzaRepository.findAll();
@@ -36,11 +41,17 @@ public class PizzaDAO {
         return pizzas;
     }
 
-    public List<IngredientEntity> getPizzaIngredients (PizzaEntity pizza) {
+    public Set<IngredientEntity> getPizzaIngredients (PizzaEntity pizza) {
         PizzaEntity pizza2 = pizzaRepository.findAll().stream().filter( p -> p.getPizzaId()==pizza.getPizzaId()).findFirst().get();
-        List<IngredientEntity> ingredients = pizza2.getIngredients();
+        Set<IngredientEntity> ingredients = pizza2.getIngredients();
 
         return ingredients;
     }
 
+    public Pizza save(Pizza pizza) {
+        PizzaEntity pizzaEntity = providerConverter.pizzaModelTopizzaEntity(pizza);
+        pizzaEntity = pizzaRepository.save(pizzaEntity);
+        return providerConverter.pizzaEntityToPizzaModel(pizzaEntity);
+
+    }
 }

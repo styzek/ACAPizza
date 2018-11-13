@@ -22,7 +22,7 @@ Nous incluons dans chaque composition : la pate, la sauce tomate et la mozza
                                                      ingredient.name == 'sauce barbecue' || ingredient.name == 'sauce tomate')}">
 
 
-                <span class="checkbox"><form:checkbox path="ingredients" value="${ingredient.name}"/>${ingredient.name}</span>
+                <span class="checkbox"><form:checkbox path="ingredientsString" value="${ingredient.name}"/>${ingredient.name}</span>
 
 
                 <c:if test="${loop.index =='6'}">

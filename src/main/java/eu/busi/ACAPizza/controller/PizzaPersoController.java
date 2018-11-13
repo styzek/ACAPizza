@@ -2,6 +2,7 @@ package eu.busi.ACAPizza.controller;
 
 import eu.busi.ACAPizza.Constants;
 import eu.busi.ACAPizza.dataAccess.dao.IngredientDAO;
+import eu.busi.ACAPizza.dataAccess.dao.PizzaDAO;
 import eu.busi.ACAPizza.model.Ingredient;
 import eu.busi.ACAPizza.model.Pizza;
 import eu.busi.ACAPizza.model.User;
@@ -25,6 +26,7 @@ import java.util.List;
 public class PizzaPersoController {
 
      static int count = 1;
+    static int id = 100;
 
     @Autowired
     public IngredientDAO ingredientDAO;
@@ -32,11 +34,13 @@ public class PizzaPersoController {
     @Autowired
     PanierService panierService;
 
+    @Autowired
+    PizzaDAO pizzaDAO;
+
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model){
         model.addAttribute("ingredientList", ingredientDAO.getAllIngredients());
         model.addAttribute("pizzaCustom",new Pizza());
-
         return "integrated:pizzaPerso";
     }
 
@@ -47,9 +51,13 @@ public class PizzaPersoController {
 //        model.addAttribute("pizzaCustom", pizzaCustom);
         pizzaCustom.setName("pizzaCustom");
         pizzaCustom.setIscomposed(true);
+
         pizzaCustom.setPrice((float) 14.06);
         panierService.addCustom(user, pizzaCustom);
+        pizzaDAO.save(pizzaCustom);
             return "redirect:/panier";
+
+
 
     }
 }

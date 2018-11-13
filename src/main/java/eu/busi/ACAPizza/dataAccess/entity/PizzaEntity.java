@@ -5,14 +5,15 @@ import eu.busi.ACAPizza.model.Ingredient;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 @Entity
 @Table(name="pizza")
 public class PizzaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="pizzaId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="pizzaId", unique = true, nullable = false)
     private int pizzaId;
 
     @Column(name="name")
@@ -39,7 +40,7 @@ public class PizzaEntity {
             inverseJoinColumns = {@JoinColumn(name = "fk_ingredientId",referencedColumnName = "ingredientId")}
 
     )
-    private List<IngredientEntity> ingredients;
+    private Set<IngredientEntity> ingredients;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -85,11 +86,11 @@ public class PizzaEntity {
         this.price = price;
     }
 
-    public List<IngredientEntity> getIngredients() {
+    public Set<IngredientEntity> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<IngredientEntity> ingredients) {
+    public void setIngredients(Set<IngredientEntity> ingredients) {
         this.ingredients = ingredients;
     }
 

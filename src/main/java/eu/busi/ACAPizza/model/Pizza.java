@@ -15,12 +15,19 @@ public class Pizza {
 
     private List<OrderPizza> orders;
 
-//    private List<Ingredient> ingredients;
-    private List<String> ingredients;
+    private List<String> ingredientsString;
+    private List<Ingredient> ingredients;
     private List<Category> categories;
 
     public Pizza() {
     }
+
+//    public Pizza(List<String> ingredientsString) {
+//        this.ingredientsString = ingredientsString;
+//        for (String s: ingredientsString){
+//            ingredients.stream()
+//        }
+//    }
 
     @Override
     public String toString() {
@@ -77,20 +84,19 @@ public class Pizza {
         this.orders = orders;
     }
 
-//    public List<Ingredient> getIngredients() {
-//        return ingredients;
-//    }
-//
-//    public void setIngredients(List<Ingredient> ingredients) {
-//        this.ingredients = ingredients;
-//    }
+    public List<String> getIngredientsString() {
+        return ingredientsString;
+    }
 
+    public void setIngredientsString(List<String> ingredientsString) {
+        this.ingredientsString = ingredientsString;
+    }
 
-    public List<String> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

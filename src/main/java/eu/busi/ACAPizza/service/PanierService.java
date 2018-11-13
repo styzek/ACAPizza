@@ -75,7 +75,7 @@ public class PanierService {
     public void addCustom(User user, Pizza pizza) {
 
 
-        if (panierMap.containsKey(pizza.getIngredients())){
+        if (panierMap.containsKey(pizza)){
 
             panierMap.computeIfPresent(pizza, ((pizza1, qtt) -> qtt + 1));
 
