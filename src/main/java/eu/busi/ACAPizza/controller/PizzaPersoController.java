@@ -45,23 +45,10 @@ public class PizzaPersoController {
     public String getFormData (Model model, @ModelAttribute(value=Constants.CURRENT_USER) User user,@ModelAttribute("pizzaCustom") Pizza pizzaCustom  ){
 
 //        model.addAttribute("pizzaCustom", pizzaCustom);
-
-
-
-        pizzaCustom.setName("PizzaCustom"+count);
-        count++;
+        pizzaCustom.setName("pizzaCustom");
         pizzaCustom.setIscomposed(true);
         pizzaCustom.setPrice((float) 14.06);
         panierService.addCustom(user, pizzaCustom);
-        if (pizzaCustom.getIngredients() != null)
-            System.out.println(">>>>>>>>>>>>>>>"+pizzaCustom.getIngredients().get(0));
-        else
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>foirer");
-
-
-
-
-
             return "redirect:/panier";
 
     }
