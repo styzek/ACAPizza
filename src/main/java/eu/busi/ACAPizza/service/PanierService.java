@@ -26,18 +26,6 @@ public class PanierService {
     private PizzaRepository pizzaRepository;
 
     public void add(User user, Pizza pizza) {
-//        HashMap<Pizza,Integer> panierMap = user.getPanier();
-//
-//        panierMap.put(pizza,1);
-//        panierMap.computeIfPresent(pizza, ((pizza1, qtt) -> qtt + 1));
-
-//        panierMap.put(pizza, panierMap.get(pizza) + 1);
-
-//        panierMap.put(pizza, panierMap.getOrDefault(pizza.getName(), 0) + 1);
-
-//        panierMap.put(pizza, panierMap.containsKey(pizza) ? panierMap.get(pizza) + 1 : 1);
-
-//
 
         if (panierMap.containsKey(pizza)){
 
@@ -48,7 +36,23 @@ public class PanierService {
         }
             user.setPanier(panierMap);
         }
-//
+
+
+    public void removeOneProduct(Pizza pizza) {
+        if (panierMap.containsKey(pizza)) {
+            if (panierMap.get(pizza) > 1)
+                panierMap.replace(pizza, panierMap.get(pizza) - 1);
+
+        }
+    }
+
+    public void addOneProduct(Pizza pizza) {
+        if (panierMap.containsKey(pizza)) {
+
+            panierMap.put(pizza, panierMap.get(pizza) + 1);
+
+        }
+    }
 //        public Optional<PizzaEntity> findByID ( int id){
 //            return pizzaRepository.findById(id);
 //        }
@@ -69,13 +73,13 @@ public class PanierService {
 
     public void removeProduct(Pizza pizza) {
         if (panierMap.containsKey(pizza)) {
-            if (panierMap.get(pizza) > 1)
-                panierMap.replace(pizza, panierMap.get(pizza) - 1);
-            else if (panierMap.get(pizza) == 1) {
+
                 panierMap.remove(pizza);
             }
         }
-    }
+
+
+
 
 //    public float calcul(User user) {
 //

@@ -12,7 +12,7 @@
         <div class="card-header bg-dark text-light">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             Shopping cart
-            <a href="" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
+            <a href="/ACAPizza/pizza" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
             <div class="clearfix"></div>
         </div>
         <div class="card-body">
@@ -20,7 +20,7 @@
             <%--<c:if test="">--%>
                 <%----%>
             <%--</c:if>--%>
-            
+
             <c:forEach items="${panier}" var="pizza">
 
                 <%--<c:set value="${pizza.pizzaId}" var="id"/>--%>
@@ -40,10 +40,13 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="quantity">
-                            <input type="button" value="-" class="minus">
+                            <c:if test="${pizza.value > 1}">
+                                <a type="button" value="-" class="btn-sm minus" href="/ACAPizza/panier/removeOne/${pizza.key.name}">-</a>
+                            </c:if>
 
                             ${pizza.value}
-                            <input type="button" value="+" class="plus">
+
+                                <a type="button" value="+" class="btn-sm plus" href="/ACAPizza/panier/addOne/${pizza.key.name}">+</a>
                         </div>
                     </div>
                     <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -57,11 +60,7 @@
             </c:forEach>
             <!-- END PRODUCT -->
 
-            <div class="pull-right">
-                <a href="" class="btn btn-outline-secondary pull-right">
-                    Update shopping cart
-                </a>
-            </div>
+
         </div>
         <div class="card-footer">
             <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">

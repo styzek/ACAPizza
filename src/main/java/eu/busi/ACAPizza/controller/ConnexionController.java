@@ -26,29 +26,29 @@ public class ConnexionController {
 //        return new UserForm();
 //    }
 //
-    @ModelAttribute(Constants.CURRENT_USER)
-    public User user(){
-        return new User();
-    }
-
-
-    @Autowired
-    public UserDAO userDAO;
-
-
-
-    @RequestMapping(method = RequestMethod.GET)
-    public String home (Model model){
-
-                return "integrated:login";
-
-
-    }
-
-    @RequestMapping(value="/login", method = RequestMethod.POST)
-    public String getFormData (Model model, @Valid @ModelAttribute(value="userForm") UserForm user){
-
-                return "redirect:/home";
-
-    }
+//    @ModelAttribute(Constants.CURRENT_USER)
+//    public User user(){
+//        return new User();
+//    }
+//
+//
+//    @Autowired
+//    public UserDAO userDAO;
+//
+//
+//
+//    @RequestMapping(method = RequestMethod.GET)
+//    public String home (Model model){
+//
+//                return "integrated:login";
+//
+//
+//    }
+//
+//    @RequestMapping(value="/loginP", method = RequestMethod.GET)
+//    public String getFormData (Model model, @Valid @ModelAttribute(value="userForm") UserForm user){
+//
+//                return "redirect:/home";
+//
+//    }
 }
