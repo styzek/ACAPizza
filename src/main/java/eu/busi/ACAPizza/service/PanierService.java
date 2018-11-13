@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 @Service
 public class PanierService {
 
+
+    static int count =1;
     private HashMap<Pizza, Integer> panierMap = new HashMap<>();
 
     ProviderConverter pro;
@@ -76,13 +78,28 @@ public class PanierService {
 
 
         if (panierMap.containsKey(pizza)){
-
+            if (panierMap.keySet().stream().allMatch(p->p.getIngredients().equals(pizza.getIngredients())))
             panierMap.computeIfPresent(pizza, ((pizza1, qtt) -> qtt + 1));
-
+            else {
+                Pizza konradLeNazi = pizza;
+                konradLeNazi.setName(pizza.getName() + count);
+                count++;
+                panierMap.put(konradLeNazi,1);
+            }
         } else {
             panierMap.put(pizza,1);
         }
         user.setPanier(panierMap);
+
+//
+//        if (panierMap.containsKey(pizza)){
+//
+//            panierMap.computeIfPresent(pizza, ((pizza1, qtt) -> qtt + 1));
+//
+//        } else {
+//            panierMap.put(pizza,1);
+//        }
+//        user.setPanier(panierMap);
     }
 
 

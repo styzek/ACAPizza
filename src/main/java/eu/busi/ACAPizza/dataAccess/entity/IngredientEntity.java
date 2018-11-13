@@ -4,6 +4,7 @@ import eu.busi.ACAPizza.model.Pizza;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="ingredient")
@@ -54,5 +55,19 @@ public class IngredientEntity {
 
     public void setPizzas(List<PizzaEntity> pizzas) {
         this.pizzas = pizzas;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof IngredientEntity)) return false;
+        IngredientEntity that = (IngredientEntity) o;
+        return Objects.equals(getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 }

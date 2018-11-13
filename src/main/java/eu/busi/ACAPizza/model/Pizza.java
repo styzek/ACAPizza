@@ -2,6 +2,7 @@ package eu.busi.ACAPizza.model;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Pizza {
 
@@ -16,7 +17,7 @@ public class Pizza {
     private List<OrderPizza> orders;
 
     private List<String> ingredientsString;
-    private List<Ingredient> ingredients;
+    private Set<Ingredient> ingredients;
     private List<Category> categories;
 
     public Pizza() {
@@ -92,11 +93,11 @@ public class Pizza {
         this.ingredientsString = ingredientsString;
     }
 
-    public List<Ingredient> getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

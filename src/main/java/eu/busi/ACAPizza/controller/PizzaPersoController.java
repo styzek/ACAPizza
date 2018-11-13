@@ -3,6 +3,8 @@ package eu.busi.ACAPizza.controller;
 import eu.busi.ACAPizza.Constants;
 import eu.busi.ACAPizza.dataAccess.dao.IngredientDAO;
 import eu.busi.ACAPizza.dataAccess.dao.PizzaDAO;
+import eu.busi.ACAPizza.dataAccess.entity.IngredientEntity;
+import eu.busi.ACAPizza.dataAccess.util.ProviderConverter;
 import eu.busi.ACAPizza.model.Ingredient;
 import eu.busi.ACAPizza.model.Pizza;
 import eu.busi.ACAPizza.model.User;
@@ -18,7 +20,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value="/pizzaPerso")
@@ -27,6 +33,9 @@ public class PizzaPersoController {
 
      static int count = 1;
     static int id = 100;
+
+    @Autowired
+    ProviderConverter providerConverter;
 
     @Autowired
     public IngredientDAO ingredientDAO;
@@ -54,9 +63,17 @@ public class PizzaPersoController {
         pizzaCustom.setIscomposed(true);
 
         pizzaCustom.setPrice((float) 14.06);
+        Set<Ingredient> ingred = ingredientDAO.getAllIngredients()
+                .stream()
+                .filter(i-> pizzaCustom.getIngredientsString().contains(i.getName()))
+                .collect(Collectors.toSet())
+                .stream()
+                .map(in->providerConverter.ingredientEntityToingredientModel(in)).collect(Collectors.toSet());
+        pizzaCustom.setIngredients(ingred);
         panierService.addCustom(user, pizzaCustom);
 
-        pizzaDAO.save(pizzaCustom);
+
+//        pizzaDAO.save(pizzaCustom);
             return "redirect:/panier";
 
 

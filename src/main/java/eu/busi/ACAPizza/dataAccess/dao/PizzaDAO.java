@@ -33,7 +33,6 @@ public class PizzaDAO {
     public List<PizzaEntity> getAllPizza () {
          List<PizzaEntity> pizzas = pizzaRepository.findAll();
 
-
          return pizzas;
     }
 

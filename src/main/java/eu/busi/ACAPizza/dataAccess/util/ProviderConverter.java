@@ -81,7 +81,6 @@ public class ProviderConverter {
         pizzaEntity.setDescription(pizza.getDescription());
         pizzaEntity.setIscomposed(pizza.isIscomposed());
         pizzaEntity.setPrice(pizza.getPrice());
-     //   pizzaEntity.setPizzaId(pizza.getPizzaId());
         pizzaEntity.setSize(pizza.getSize());
         Set<IngredientEntity> ingredients =
                 pizza.getIngredientsString()
@@ -94,8 +93,7 @@ public class ProviderConverter {
                                     .get())
                         .collect(Collectors.toSet());
 // mon avis sur une méthode proprepizzaEntity.setIngredientity.getDescription());
-//        pizza.setIscomposed(pizzaEntity.isIscomposed());
-//        pizza.setPrice(pizzaEntits(ingredients);
+
         pizzaEntity.setIngredients(ingredients);
 
 
@@ -104,14 +102,18 @@ public class ProviderConverter {
     }
 
     public Pizza pizzaEntityToPizzaModel(PizzaEntity pizzaEntity) {
+        System.out.println("abdelllaraison");
         Pizza pizza = new Pizza();
         pizza.setName(pizzaEntity.getName());
         pizza.setDescription(pizzaEntity.getDescription());
+        pizza.setIscomposed(pizzaEntity.isIscomposed());
         pizza.setPrice(pizzaEntity.getPrice());
-   //     pizza.setPizzaId(pizzaEntity.getPizzaId());
         pizza.setSize(pizzaEntity.getSize());
-
-        // pizza.setIngredients(pizzaEntity.getIngredients().stream().map(p->p.getName()).collect(Collectors.toList()));
+        pizza.setIngredients(pizzaEntity.getIngredients()
+                .stream()
+                .peek(System.out::println)
+                .map(this::ingredientEntityToingredientModel)
+                .collect(Collectors.toSet()));
 
         return pizza;
     }

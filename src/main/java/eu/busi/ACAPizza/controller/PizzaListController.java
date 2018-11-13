@@ -26,7 +26,6 @@ public class PizzaListController {
     @Autowired
     public UserDAO userDAO;
 
-
     @Autowired
     public PizzaDAO pizzaDAO;
 
@@ -40,49 +39,29 @@ public class PizzaListController {
     ProviderConverter providerConverter;
 
 
-//    private PizzaRepository pizzaRepository;
-
 
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model){
 
+        System.out.println(pizzaDAO.getAllPizza());
         model.addAttribute("pizzas", pizzaDAO.getAllPizza());
         model.addAttribute("ingredients", ingredientDAO.getAllIngredients());
-//        model.addAttribute("user",new User());
 
         return "integrated:pizzaList";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/add/{pizzaName}")
     public String add(Model model, @ModelAttribute(value = Constants.CURRENT_USER) User user,
-                      @PathVariable("pizzaName") String name){
+                      @PathVariable("pizzaName") String name) {
 
         PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
         Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
-//        if(panierService.findByID(pizzaId).isPresent()) {
+        {
             panierService.add(user, pizza);
 
-//        panierService.add(user, pizza);
 
-        return "redirect:/panier";
+            return "redirect:/panier";
+        }
     }
-
-
-
-//    @RequestMapping(value="/ajout", method = RequestMethod.POST)
-//    public void getFormData (Model model, @Valid @ModelAttribute(value= Constants.CURRENT_USER) User user,
-//                             final BindingResult errors, @ModelAttribute(value="pizza") Pizza pizza){
-//        if (!errors.hasErrors()){
-//
-//            if(!model.containsAttribute("order")) {
-//                model.addAttribute("order", new OrderEntity());
-//
-//            }
-//
-//        }
-//
-//    }
-
-
 
 }
