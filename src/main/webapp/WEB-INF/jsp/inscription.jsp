@@ -43,7 +43,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <form:label path="phone" for="inputPhone">Phone Number</form:label>
-            <form:input path="phone" type="text" class="form-control" id="inputPhone" placeholder="ex. 0476579193" <c:if test="phone" minlength="10"/>
+            <form:input path="phone" type="text" class="form-control" id="inputPhone" placeholder="ex. 0476579193"  minlength="10"/>
         </div>
 
 
