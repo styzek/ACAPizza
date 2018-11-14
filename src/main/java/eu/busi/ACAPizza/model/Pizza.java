@@ -120,14 +120,13 @@ public class Pizza {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Pizza)) return false;
         Pizza pizza = (Pizza) o;
-        return pizzaId == pizza.pizzaId &&
-                Objects.equals(name, pizza.name);
+        return Objects.equals(getIngredients(), pizza.getIngredients());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pizzaId, name);
+        return Objects.hash(getIngredients());
     }
 }

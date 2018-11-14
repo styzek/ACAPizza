@@ -125,4 +125,19 @@ public class PizzaEntity {
     public void setCategories(List<CategoryEntity> categories) {
         this.categories = categories;
     }
+
+    @Override
+    public String toString() {
+        return "PizzaEntity{" +
+                "pizzaId=" + pizzaId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", size='" + size + '\'' +
+                ", price=" + price +
+                ", iscomposed=" + iscomposed +
+                ", orders=" + orders +
+                ", ingredients=" + ingredients +
+                ", categories=" + categories +
+                '}';
+    }
 }
