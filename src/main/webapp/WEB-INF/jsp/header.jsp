@@ -15,7 +15,7 @@
                 <a class="nav-link" href="/ACAPizza/pizza">Pizza's</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/ACAPizza/panier">Panier<span class="badge">${panier.length}0</span></a>
+                <a class="nav-link" href="/ACAPizza/panier">Panier</a>
 
             </li>
 

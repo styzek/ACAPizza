@@ -123,6 +123,10 @@
                         payment: function (data, actions) {
                             return actions.payment.create({
                                 payment: {
+                            //         redirect_urls:{
+                            //             return_url: 'http://localhost:8082/ACAPizza/panier/process',
+                            //             cancel_url:'http://localhost:3000/ACAPizza/panier'
+                            // },
                                     transactions: [
                                         {
                                             amount: {

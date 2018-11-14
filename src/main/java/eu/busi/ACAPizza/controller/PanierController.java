@@ -115,5 +115,12 @@ public class PanierController {
         return "redirect:/panier";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/process")
+    public String process (Model model, @Valid @ModelAttribute(value= Constants.CURRENT_USER) User user,
+                             final BindingResult errors, @PathVariable("pizzaName") String name){
+
+        panierService.removeAll();
+        return "redirect:/home";
+    }
 
 }

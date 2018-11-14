@@ -4,7 +4,7 @@
 <!-- Page Heading -->
 
 <div class="float-right">
-    <a class="btn  btn-outline-primary my-2 my-sm-0 ml-1" href="/ACAPizza/pizzaPerso" role="button">Composer ma Pizza
+    <a class="btn btn-primary btn-lg my-2 my-sm-0 ml-1" href="/ACAPizza/pizzaPerso" role="button">Composer ma Pizza
         !</a>
 </div>
 <br>

@@ -63,5 +63,15 @@ public class PanierService {
             }
         }
 
+    public void removeAll() {
+
+        panierMap = new HashMap<>();
     }
+
+}
+
+
+
+
+
 
