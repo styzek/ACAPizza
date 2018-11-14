@@ -12,8 +12,8 @@ public class OrderEntity {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="orderId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="orderId", unique = true, nullable = false)
     private int orderId;
 
     @Column(name="date")
