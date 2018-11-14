@@ -108,7 +108,7 @@
                         funding: {
                             allowed: [
                                 paypal.FUNDING.CARD,
-                                paypal.FUNDING.CREDIT
+
                             ],
                             disallowed: []
                         },
@@ -116,8 +116,8 @@
 // PayPal Client IDs - replace with your own
 // Create a PayPal app: https://developer.paypal.com/developer/applications/create
                         client: {
-                            sandbox: 'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                            production: '<insert production client id>'
+                            sandbox: 'ATUaJ2Nsk7scrAAUeZlmCt589Qzz81PwwS335PmtrlpnUb5tXfwr7T5Sc_WFzbVYV0wQ6bANv3EHgCUl',
+                            production: 'konrad4595-facilitator@gmail.com'
                         },
 
                         payment: function (data, actions) {
