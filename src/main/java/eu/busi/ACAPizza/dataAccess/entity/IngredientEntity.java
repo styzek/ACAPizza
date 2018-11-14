@@ -55,4 +55,5 @@ public class IngredientEntity {
     public void setPizzas(List<PizzaEntity> pizzas) {
         this.pizzas = pizzas;
     }
+
 }
