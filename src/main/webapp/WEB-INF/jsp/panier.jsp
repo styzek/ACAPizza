@@ -83,6 +83,66 @@
             </div>
             <div class="pull-right" style="margin: 10px">
                 <a href="" class="btn btn-success pull-right">Checkout</a>
+                <div id="paypal-button-container"></div>
+                <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+                <script>
+                    // Render the PayPal button
+                    paypal.Button.render({
+// Set your environment
+                        env: 'sandbox', // sandbox | production
+
+// Specify the style of the button
+                        style: {
+                            layout: 'horizontal',  // horizontal | vertical
+                            size:   'medium',    // medium | large | responsive
+                            shape:  'rect',      // pill | rect
+                            color:  'blue'       // gold | blue | silver | white | black
+                        },
+
+// Specify allowed and disallowed funding sources
+//
+// Options:
+// - paypal.FUNDING.CARD
+// - paypal.FUNDING.CREDIT
+// - paypal.FUNDING.ELV
+                        funding: {
+                            allowed: [
+                                paypal.FUNDING.CARD,
+
+                            ],
+                            disallowed: []
+                        },
+
+// PayPal Client IDs - replace with your own
+// Create a PayPal app: https://developer.paypal.com/developer/applications/create
+                        client: {
+                            sandbox: 'ATUaJ2Nsk7scrAAUeZlmCt589Qzz81PwwS335PmtrlpnUb5tXfwr7T5Sc_WFzbVYV0wQ6bANv3EHgCUl',
+                            production: 'konrad4595-facilitator@gmail.com'
+                        },
+
+                        payment: function (data, actions) {
+                            return actions.payment.create({
+                                payment: {
+                                    transactions: [
+                                        {
+                                            amount: {
+                                                total: '${prixTotal}',
+                                                currency: 'EUR'
+                                            }
+                                        }
+                                    ]
+                                }
+                            });
+                        },
+
+                        onAuthorize: function (data, actions) {
+                            return actions.payment.execute()
+                                .then(function () {
+                                    window.alert('Payment Complete!');
+                                });
+                        }
+                    }, '#paypal-button-container');
+                </script>
                 <div class="pull-right" style="margin: 5px">
                     Total price: <b>${prixTotal}</b>
                 </div>

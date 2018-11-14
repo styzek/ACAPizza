@@ -81,16 +81,19 @@ public class ProviderConverter {
         pizzaEntity.setDescription(pizza.getDescription());
         pizzaEntity.setIscomposed(pizza.isIscomposed());
         pizzaEntity.setPrice(pizza.getPrice());
+
+        //   pizzaEntity.setPizzaId(pizza.getPizzaId());
+
         pizzaEntity.setSize(pizza.getSize());
         Set<IngredientEntity> ingredients =
                 pizza.getIngredientsString()
                         .stream()
                         .map(p -> ingredientDAO
-                                    .getAllIngredients()
-                                    .stream()
-                                    .filter(i -> i.getName().equals(p))
-                                    .findFirst()
-                                    .get())
+                                .getAllIngredients()
+                                .stream()
+                                .filter(i -> i.getName().equals(p))
+                                .findFirst()
+                                .get())
                         .collect(Collectors.toSet());
 // mon avis sur une méthode proprepizzaEntity.setIngredientity.getDescription());
 
@@ -108,10 +111,13 @@ public class ProviderConverter {
         pizza.setDescription(pizzaEntity.getDescription());
         pizza.setIscomposed(pizzaEntity.isIscomposed());
         pizza.setPrice(pizzaEntity.getPrice());
+
+
         pizza.setSize(pizzaEntity.getSize());
         pizza.setIngredients(pizzaEntity.getIngredients()
                 .stream()
                 .peek(System.out::println)
+
                 .map(this::ingredientEntityToingredientModel)
                 .collect(Collectors.toSet()));
 

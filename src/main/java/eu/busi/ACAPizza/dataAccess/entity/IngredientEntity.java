@@ -70,4 +70,5 @@ public class IngredientEntity {
     public int hashCode() {
         return Objects.hash(getName());
     }
+
 }
