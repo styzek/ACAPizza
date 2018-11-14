@@ -2,7 +2,7 @@ package eu.busi.ACAPizza.model;
 
 public class OrderPizza {
 
-
+    private int id;
     private Order order;
     private Pizza pizza;
     private int quantity;
@@ -32,5 +32,14 @@ public class OrderPizza {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

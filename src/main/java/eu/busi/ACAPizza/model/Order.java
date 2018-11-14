@@ -1,5 +1,6 @@
 package eu.busi.ACAPizza.model;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -7,9 +8,11 @@ import java.util.List;
 
 public class Order {
 
+    private int orderId;
     private User client;
     private LocalDateTime date;
-    List<OrderPizza> pizzas;
+    private List<OrderPizza> commandeLine;
+    private Boolean isPaid;
 
     public Order() {}
 
@@ -21,12 +24,13 @@ public class Order {
         this.client = client;
     }
 
-    public List<OrderPizza> getPizzas() {
-        return pizzas;
+
+    public List<OrderPizza> getCommandeLine() {
+        return commandeLine;
     }
 
-    public void setPizzas(List<OrderPizza> pizzas) {
-        this.pizzas = pizzas;
+    public void setCommandeLine(List<OrderPizza> commandeLine) {
+        this.commandeLine = commandeLine;
     }
 
     public LocalDateTime getDate() {
@@ -35,5 +39,21 @@ public class Order {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public Boolean getPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(Boolean paid) {
+        isPaid = paid;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 }

@@ -1,13 +1,8 @@
 package eu.busi.ACAPizza.dataAccess.util;
 
 import eu.busi.ACAPizza.dataAccess.dao.IngredientDAO;
-import eu.busi.ACAPizza.dataAccess.entity.IngredientEntity;
-import eu.busi.ACAPizza.dataAccess.entity.PizzaEntity;
-import eu.busi.ACAPizza.dataAccess.entity.RoleEntity;
-import eu.busi.ACAPizza.dataAccess.entity.UserEntity;
-import eu.busi.ACAPizza.model.Ingredient;
-import eu.busi.ACAPizza.model.Pizza;
-import eu.busi.ACAPizza.model.User;
+import eu.busi.ACAPizza.dataAccess.entity.*;
+import eu.busi.ACAPizza.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -77,6 +72,7 @@ public class ProviderConverter {
     public PizzaEntity pizzaModelTopizzaEntity(Pizza pizza) {
 
         PizzaEntity pizzaEntity = new PizzaEntity();
+        pizzaEntity.setPizzaId(pizza.getPizzaId());
         pizzaEntity.setName(pizza.getName());
         pizzaEntity.setDescription(pizza.getDescription());
         pizzaEntity.setIscomposed(pizza.isIscomposed());
@@ -95,7 +91,6 @@ public class ProviderConverter {
                                 .findFirst()
                                 .get())
                         .collect(Collectors.toSet());
-// mon avis sur une méthode proprepizzaEntity.setIngredientity.getDescription());
 
         pizzaEntity.setIngredients(ingredients);
 
@@ -105,8 +100,9 @@ public class ProviderConverter {
     }
 
     public Pizza pizzaEntityToPizzaModel(PizzaEntity pizzaEntity) {
-        System.out.println("abdelllaraison");
+
         Pizza pizza = new Pizza();
+        pizza.setPizzaId(pizzaEntity.getPizzaId());
         pizza.setName(pizzaEntity.getName());
         pizza.setDescription(pizzaEntity.getDescription());
         pizza.setIscomposed(pizzaEntity.isIscomposed());
@@ -140,6 +136,49 @@ public class ProviderConverter {
         // ingredient.setPizzas( pizzaEntityToPizzaModel(ingredientEntity.getPizzas());
         ingredientEntity.setStock(ingredient.getStock());
         return ingredientEntity;
+    }
+
+    public OrderEntity orderModelToOrderEntity(Order order) {
+        OrderEntity orderEntity = new OrderEntity();
+        orderEntity.setOrderId(order.getOrderId());
+        orderEntity.setClient(this.userModelToUserEntity(order.getClient()));
+        orderEntity.setDate(order.getDate());
+        orderEntity.setPaid(order.getPaid());
+        orderEntity.setCommandeLine(order.getCommandeLine().stream().map(o -> orderPizzaModelToOrderPizzaEntity(o)).collect(Collectors.toList())
+        );
+
+        return orderEntity;
+    }
+
+    public Order orderEntityToOrderModel(OrderEntity orderEntity) {
+        Order order = new Order();
+        order.setOrderId(orderEntity.getOrderId());
+        order.setClient(this.userEntityToUserModel(orderEntity.getClient()));
+        order.setDate(orderEntity.getDate());
+        order.setPaid(orderEntity.getPaid());
+        order.setCommandeLine(orderEntity.getCommandeLine().stream().map(o -> orderPizzaEntityToOrderPizzaModel(o)).collect(Collectors.toList())
+        );
+        return order;
+    }
+
+    public  OrderPizzaEntity orderPizzaModelToOrderPizzaEntity (OrderPizza orderPizza){
+        OrderPizzaEntity orderPizzaEntity = new OrderPizzaEntity();
+
+        orderPizzaEntity.setId(orderPizza.getId());
+        orderPizzaEntity.setQuantity(orderPizza.getQuantity());
+        orderPizzaEntity.setPizza(this.pizzaModelTopizzaEntity(orderPizza.getPizza()));
+        orderPizzaEntity.setOrder(this.orderModelToOrderEntity(orderPizza.getOrder()));
+        return orderPizzaEntity;
+    }
+
+    public  OrderPizza orderPizzaEntityToOrderPizzaModel (OrderPizzaEntity orderPizzaEntity){
+        OrderPizza orderPizza = new OrderPizza();
+
+        orderPizza.setId(orderPizzaEntity.getId());
+        orderPizza.setQuantity(orderPizzaEntity.getQuantity());
+        orderPizza.setPizza(this.pizzaEntityToPizzaModel(orderPizzaEntity.getPizza()));
+        orderPizza.setOrder(this.orderEntityToOrderModel(orderPizzaEntity.getOrder()));
+        return orderPizza;
     }
 
 

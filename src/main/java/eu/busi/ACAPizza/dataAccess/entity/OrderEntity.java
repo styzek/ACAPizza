@@ -19,12 +19,15 @@ public class OrderEntity {
     @Column(name="date")
     private LocalDateTime date;
 
+    @Column(name = "isPaid")
+    private Boolean isPaid;
+
     @ManyToOne
     @JoinColumn(name = "fk_client",referencedColumnName = "username")
     private UserEntity client;
 
     @OneToMany(mappedBy ="order", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    List<OrderPizzaEntity> pizzas;
+    private List<OrderPizzaEntity> commandeLine;
 
     public OrderEntity() {}
 
@@ -47,11 +50,19 @@ public class OrderEntity {
         this.client = client;
     }
 
-    public List<OrderPizzaEntity> getPizzas() {
-        return pizzas;
+    public List<OrderPizzaEntity> getCommandeLine() {
+        return commandeLine;
     }
 
-    public void setPizzas(List<OrderPizzaEntity> pizzas) {
-        this.pizzas = pizzas;
+    public void setCommandeLine(List<OrderPizzaEntity> commandeLine) {
+        this.commandeLine = commandeLine;
+    }
+
+    public Boolean getPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(Boolean paid) {
+        isPaid = paid;
     }
 }
