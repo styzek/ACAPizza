@@ -23,9 +23,6 @@ public class PanierService {
     static int count =1;
     private HashMap<Pizza, Integer> panierMap = new HashMap<>();
 
-    ProviderConverter pro;
-
-    private PizzaRepository pizzaRepository;
 
     public void add(User user, Pizza pizza) {
 
@@ -39,7 +36,6 @@ public class PanierService {
             user.setPanier(panierMap);
         }
 
-
     public void removeOneProduct(Pizza pizza) {
         if (panierMap.containsKey(pizza)) {
             if (panierMap.get(pizza) > 1)
@@ -48,63 +44,15 @@ public class PanierService {
         }
     }
 
-    public void addOneProduct(Pizza pizza) {
-        if (panierMap.containsKey(pizza)) {
-
-            panierMap.put(pizza, panierMap.get(pizza) + 1);
-
-        }
-    }
-//        public Optional<PizzaEntity> findByID ( int id){
-//            return pizzaRepository.findById(id);
-//        }
-
-//    public User remove (User user,Pizza pizza){
-//
-//        Map<Pizza,Integer> x = user.getPanier();
-//
-//        if (x.containsKey(pizza)){
-//            int quantity = x.get(pizza);
-//            if (x.get(pizza) !=0)
-//            x.put(pizza, quantity - 1);
-//        }
-//        user.setPanier(x);
-//
-//        return user;
-//    }
-
-
     public void addCustom(User user, Pizza pizza) {
-
-
         if (panierMap.containsKey(pizza)){
-            if (panierMap.keySet().stream().allMatch(p->p.getIngredients().equals(pizza.getIngredients())))
-            panierMap.computeIfPresent(pizza, ((pizza1, qtt) -> qtt + 1));
-            else {
-                Pizza konradLeNazi = pizza;
-                konradLeNazi.setName(pizza.getName() + count);
-                count++;
-                panierMap.put(konradLeNazi,1);
-            }
+            panierMap.replace(pizza,  panierMap.get(pizza) + 1);
         } else {
+                pizza.setName(pizza.getName() + count++);
             panierMap.put(pizza,1);
         }
         user.setPanier(panierMap);
-
-//
-//        if (panierMap.containsKey(pizza)){
-//
-//            panierMap.computeIfPresent(pizza, ((pizza1, qtt) -> qtt + 1));
-//
-//        } else {
-//            panierMap.put(pizza,1);
-//        }
-//        user.setPanier(panierMap);
     }
-
-
-
-
 
 
 
@@ -114,17 +62,6 @@ public class PanierService {
                 panierMap.remove(pizza);
             }
         }
-
-
-
-
-//    public float calcul(User user) {
-//
-//               HashMap<Pizza,Integer>  mapcalcul= user.getPanier();
-//
-//               mapcalcul.entrySet().stream().forEach((k)->  {float i = (k.getKey().getPrice()*k.getValue());})
-//
-//    }
 
     }
 

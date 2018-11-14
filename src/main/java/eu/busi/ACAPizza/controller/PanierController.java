@@ -87,10 +87,8 @@ public class PanierController {
     public String remove (Model model, @Valid @ModelAttribute(value= Constants.CURRENT_USER) User user,
                              final BindingResult errors, @PathVariable("pizzaName") String name){
 
-        PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
-        Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
+        Pizza pizza= user.getPanier().keySet().stream().filter(p -> p.getName().equals(name)).findFirst().get();
 
-        System.out.println(pizza);
         panierService.removeProduct(pizza);
         return "redirect:/panier";
         }
@@ -99,8 +97,7 @@ public class PanierController {
     public String removeOne (Model model, @Valid @ModelAttribute(value= Constants.CURRENT_USER) User user,
                           final BindingResult errors, @PathVariable("pizzaName") String name){
 
-        PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
-        Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
+        Pizza pizza= user.getPanier().keySet().stream().filter(p -> p.getName().equals(name)).findFirst().get();
 
 
         panierService.removeOneProduct(pizza);
@@ -111,9 +108,8 @@ public class PanierController {
     public String addOne (Model model, @Valid @ModelAttribute(value= Constants.CURRENT_USER) User user,
                              final BindingResult errors, @PathVariable("pizzaName") String name){
 
-        PizzaEntity pizza1 = pizzaDAO.getAllPizza().stream().filter(p -> p.getName().equals(name)).findFirst().get();
-        Pizza pizza = providerConverter.pizzaEntityToPizzaModel(pizza1);
 
+        Pizza pizza= user.getPanier().keySet().stream().filter(p -> p.getName().equals(name)).findFirst().get();
 
         panierService.add(user, pizza);
         return "redirect:/panier";
