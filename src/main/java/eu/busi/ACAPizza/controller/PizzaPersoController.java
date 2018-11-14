@@ -61,6 +61,9 @@ public class PizzaPersoController {
 //        model.addAttribute("pizzaCustom", pizzaCustom);
         pizzaCustom.setName("pizzaCustom");
         pizzaCustom.setIscomposed(true);
+        pizzaCustom.getIngredientsString().add("pate ag");
+        pizzaCustom.getIngredientsString().add("sauce tomate");
+        pizzaCustom.getIngredientsString().add("mozzarella");
 
         pizzaCustom.setPrice((float) 14.06);
         Set<Ingredient> ingred = ingredientDAO.getAllIngredients()

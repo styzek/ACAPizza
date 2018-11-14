@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class OrderPizzaEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", unique = true, nullable = false)
     private int id;
 
     @ManyToOne
