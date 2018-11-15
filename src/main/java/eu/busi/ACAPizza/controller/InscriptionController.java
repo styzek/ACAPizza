@@ -3,6 +3,7 @@ package eu.busi.ACAPizza.controller;
 
 import eu.busi.ACAPizza.Constants;
 import eu.busi.ACAPizza.dataAccess.dao.UserDAO;
+import eu.busi.ACAPizza.dataAccess.entity.UserEntity;
 import eu.busi.ACAPizza.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,13 @@ public class InscriptionController {
     public String getFormData (Model model, @Valid @ModelAttribute(value=Constants.CURRENT_USER) User user, final BindingResult errors){
         if (!errors.hasErrors()){
 
-            userDAO.save(user);
+            UserEntity userEntity = userDAO.getAllUsers().stream().filter(u -> u.getUsername().equals(user.getUsername())).findFirst().get();
+
+            if(userEntity == null) {
+                userDAO.save(user);
+            } else {
+                return "/WEB-INF/jsp/errorAlreadyExists.jsp";
+            }
             return "redirect:/home";
         }
         return "/WEB-INF/jsp/keyError.jsp";

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import eu.busi.ACAPizza.dataAccess.util.ProviderConverter;
 import eu.busi.ACAPizza.model.User;
 
+import java.util.List;
+
 @Service
 public class UserDAO  {
 
@@ -37,6 +39,12 @@ public class UserDAO  {
             return user;
 
 
+    }
+
+    public List<UserEntity> getAllUsers () {
+
+        List<UserEntity> users = userRepository.findAll();
+        return users;
     }
 
 
