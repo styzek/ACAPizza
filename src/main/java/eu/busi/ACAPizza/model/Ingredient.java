@@ -1,5 +1,6 @@
 package eu.busi.ACAPizza.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ public class Ingredient {
     private int stock;
     private String name;
     private boolean isCheckd;
-    List<Pizza> pizzas;
+    private List<Pizza> pizzas = new ArrayList<>();
 
     public Ingredient() {
     }

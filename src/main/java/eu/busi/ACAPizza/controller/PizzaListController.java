@@ -17,6 +17,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping(value="/pizza")
 @SessionAttributes({Constants.CURRENT_USER})
@@ -43,9 +45,10 @@ public class PizzaListController {
     @RequestMapping(method = RequestMethod.GET)
     public String home (Model model){
 
-        System.out.println(pizzaDAO.getAllPizza());
+
         model.addAttribute("pizzas", pizzaDAO.getAllPizza());
         model.addAttribute("ingredients", ingredientDAO.getAllIngredients());
+
 
         return "integrated:pizzaList";
     }

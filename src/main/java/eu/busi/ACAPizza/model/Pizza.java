@@ -1,8 +1,6 @@
 package eu.busi.ACAPizza.model;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Pizza {
 
@@ -14,11 +12,10 @@ public class Pizza {
     private float price;
     private boolean iscomposed;
 
-    private List<OrderPizza> orders;
-
-    private List<String> ingredientsString;
-    private Set<Ingredient> ingredients;
-    private List<Category> categories;
+    private List<OrderPizza> orders = new ArrayList<>();
+    private List<String> ingredientsString = new ArrayList<>();
+    private Set<Ingredient> ingredients =new HashSet<>();
+    private List<Category> categories = new ArrayList<>();
 
     public Pizza() {
     }

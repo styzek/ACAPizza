@@ -35,9 +35,11 @@ public class UserDAO  {
 
 
             return user;
-
-
     }
 
+    public  User getUserConnect (String name) {
+        return providerConverter.userEntityToUserModel(userRepository.findAll().stream().filter(u-> u.getUsername().equals(name)).findFirst().get());
+
+    }
 
 }

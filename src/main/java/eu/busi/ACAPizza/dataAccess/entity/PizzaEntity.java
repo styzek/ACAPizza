@@ -3,9 +3,7 @@ package eu.busi.ACAPizza.dataAccess.entity;
 import eu.busi.ACAPizza.model.Ingredient;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="pizza")
@@ -31,7 +29,7 @@ public class PizzaEntity {
     private boolean iscomposed;
 
     @OneToMany(mappedBy ="pizza", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<OrderPizzaEntity>orders;
+    private List<OrderPizzaEntity>orders = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -40,7 +38,7 @@ public class PizzaEntity {
             inverseJoinColumns = {@JoinColumn(name = "fk_ingredientId",referencedColumnName = "ingredientId")}
 
     )
-    private Set<IngredientEntity> ingredients;
+    private Set<IngredientEntity> ingredients= new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -49,7 +47,7 @@ public class PizzaEntity {
             inverseJoinColumns = {@JoinColumn(name = "fk_categoryId",referencedColumnName = "name")}
 
     )
-    private List<CategoryEntity> categories;
+    private List<CategoryEntity> categories = new ArrayList<>();
 
 
     public PizzaEntity() {}

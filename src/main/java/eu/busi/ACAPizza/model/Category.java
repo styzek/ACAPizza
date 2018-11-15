@@ -1,5 +1,6 @@
 package eu.busi.ACAPizza.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Category {
@@ -8,7 +9,7 @@ public class Category {
 
     private String name;
 
-    private Collection<Pizza> pizzas;
+    private Collection<Pizza> pizzas= new ArrayList<>();
 
     public Category() {
     }

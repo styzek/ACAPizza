@@ -1,9 +1,10 @@
 package eu.busi.ACAPizza.model;
 
+import eu.busi.ACAPizza.dataAccess.entity.OrderEntity;
+
+import javax.management.relation.Role;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class User implements Serializable {
 
@@ -18,7 +19,7 @@ public class User implements Serializable {
     private String phone;
 
 
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     private String authorities ;
     private Boolean non_expired ;
@@ -26,15 +27,9 @@ public class User implements Serializable {
     private Boolean credentials_non_expired ;
     private Boolean enabled ;
     private HashMap<Pizza,Integer> panier = new HashMap<>();
-    private Panier panier2;
+    private Set<Role> roles = new HashSet<>();
 
-    public Panier getPanier2() {
-        return panier2;
-    }
 
-    public void setPanier2(Panier panier2) {
-        this.panier2 = panier2;
-    }
 
     public User () {}
 

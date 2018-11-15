@@ -10,6 +10,12 @@ public class OrderPizza {
     public OrderPizza() {
     }
 
+    public OrderPizza(Order order, Pizza pizza, int quantity) {
+        this.order = order;
+        this.pizza = pizza;
+        this.quantity = quantity;
+    }
+
     public Order getOrder() {
         return order;
     }

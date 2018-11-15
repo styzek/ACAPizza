@@ -3,6 +3,7 @@ package eu.busi.ACAPizza.dataAccess.entity;
 import eu.busi.ACAPizza.model.Pizza;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class IngredientEntity {
     private String name;
 
     @ManyToMany(mappedBy = "ingredients")
-    List<PizzaEntity> pizzas;
+    private List<PizzaEntity> pizzas = new ArrayList<>() ;
 
     public IngredientEntity() {
     }

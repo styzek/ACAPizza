@@ -1,7 +1,9 @@
 package eu.busi.ACAPizza.dataAccess.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 @Entity
 @Table(name="category")
@@ -15,7 +17,7 @@ public class CategoryEntity {
 
 
     @ManyToMany(mappedBy = "categories")
-    private Collection<PizzaEntity> pizzas;
+    private Collection<PizzaEntity> pizzas =new ArrayList<>();
 
     public CategoryEntity() {
     }

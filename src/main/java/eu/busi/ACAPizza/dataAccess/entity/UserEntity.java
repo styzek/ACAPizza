@@ -5,9 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="client")
@@ -30,7 +28,7 @@ public class UserEntity implements UserDetails, Serializable {
     private String phone;
 
     @OneToMany(mappedBy ="client", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<OrderEntity> orders;
+    private List<OrderEntity> orders= new ArrayList<>();
 
     @Column(name="non_expired")
     private Boolean accountNonExpired ;
@@ -48,7 +46,7 @@ public class UserEntity implements UserDetails, Serializable {
             inverseJoinColumns = {@JoinColumn(name = "fk_role",referencedColumnName = "role")}
 
     )
-    private Set<RoleEntity> roles;
+    private Set<RoleEntity> roles = new HashSet<>();
 
 
     public UserEntity() {}
@@ -174,4 +172,19 @@ public class UserEntity implements UserDetails, Serializable {
     }
 
 
+    public Boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public Boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public Boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
 }

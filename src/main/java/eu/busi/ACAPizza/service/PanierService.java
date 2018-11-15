@@ -5,9 +5,11 @@ import eu.busi.ACAPizza.dataAccess.repository.PizzaRepository;
 import eu.busi.ACAPizza.dataAccess.util.ProviderConverter;
 import eu.busi.ACAPizza.model.Pizza;
 import eu.busi.ACAPizza.model.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.parser.Entity;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class PanierService {
 
-
+//    public Principal principal;
     static int count =1;
     private HashMap<Pizza, Integer> panierMap = new HashMap<>();
 
@@ -37,7 +39,7 @@ public class PanierService {
         }
 
     public void removeOneProduct(Pizza pizza) {
-        if (panierMap.containsKey(pizza)) {
+        if (panierMap.containsKey(pizza) ) {
             if (panierMap.get(pizza) > 1)
                 panierMap.replace(pizza, panierMap.get(pizza) - 1);
 
@@ -57,10 +59,27 @@ public class PanierService {
 
 
     public void removeProduct(Pizza pizza) {
-        if (panierMap.containsKey(pizza)) {
+        if (panierMap.containsKey(pizza)
+                ) {
 
                 panierMap.remove(pizza);
             }
+        }
+
+        public AtomicInteger calculPrixTotal(User user) {
+            AtomicInteger totalPriceInCentime = new AtomicInteger(0);
+
+
+            user.getPanier().entrySet().stream().forEach(pentry -> {
+                int centimeParPizza = (int) (pentry.getKey().getPrice() * 100);
+                Integer quantity = pentry.getValue();
+                int prixEnCentime = centimeParPizza * quantity;
+
+                totalPriceInCentime.addAndGet(prixEnCentime);
+
+            });
+
+            return totalPriceInCentime;
         }
 
     }

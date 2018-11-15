@@ -3,6 +3,7 @@ package eu.busi.ACAPizza.model;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,10 +12,18 @@ public class Order {
     private int orderId;
     private User client;
     private LocalDateTime date;
-    private List<OrderPizza> commandeLine;
+    private List<OrderPizza> commandeLine = new ArrayList<>();
     private Boolean isPaid;
 
     public Order() {}
+
+    public Order( User client, LocalDateTime date, Boolean isPaid) {
+
+        this.client = client;
+        this.date = date;
+        this.commandeLine = commandeLine;
+        this.isPaid = isPaid;
+    }
 
     public User getClient() {
         return client;

@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -36,6 +34,7 @@ public class ProviderConverter {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(user.getUsername());
         userEntity.setLastName(user.getLastName());
+        userEntity.setOrders(user.getOrders().stream().map(o -> orderModelToOrderEntity(o)).collect(Collectors.toList()));
         userEntity.setAdress(user.getAdress());
         userEntity.setZipCode(user.getZipCode());
         userEntity.setEmail(user.getEmail());
@@ -64,7 +63,12 @@ public class ProviderConverter {
         user.setEmail(userEntity.getEmail());
         user.setPassword(userEntity.getPassword());
         user.setPhone(userEntity.getPhone());
-
+        user.setOrders(userEntity.getOrders().stream().map(o -> orderEntityToOrderModel(o)).collect(Collectors.toList()));
+        user.setAuthorities("ROLE_USER");
+        user.setNon_expired(userEntity.getAccountNonExpired());
+        user.setEnabled(userEntity.getEnable());
+        user.setCredentials_non_expired(userEntity.getAccountNonExpired());
+        user.setNon_locked(userEntity.getAccountNonLocked());
 
         return user;
     }
@@ -112,7 +116,7 @@ public class ProviderConverter {
         pizza.setSize(pizzaEntity.getSize());
         pizza.setIngredients(pizzaEntity.getIngredients()
                 .stream()
-                .peek(System.out::println)
+
 
                 .map(this::ingredientEntityToingredientModel)
                 .collect(Collectors.toSet()));
@@ -144,8 +148,7 @@ public class ProviderConverter {
         orderEntity.setClient(this.userModelToUserEntity(order.getClient()));
         orderEntity.setDate(order.getDate());
         orderEntity.setPaid(order.getPaid());
-        orderEntity.setCommandeLine(order.getCommandeLine().stream().map(o -> orderPizzaModelToOrderPizzaEntity(o)).collect(Collectors.toList())
-        );
+        orderEntity.setCommandeLine(order.getCommandeLine().stream().map(o -> orderPizzaModelToOrderPizzaEntity(o)).collect(Collectors.toList()));
 
         return orderEntity;
     }

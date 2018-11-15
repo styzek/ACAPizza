@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Scope;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,7 @@ public class OrderEntity {
     private UserEntity client;
 
     @OneToMany(mappedBy ="order", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<OrderPizzaEntity> commandeLine;
+    private List<OrderPizzaEntity> commandeLine = new ArrayList<>() ;
 
     public OrderEntity() {}
 

@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -16,7 +17,7 @@ public class RoleEntity implements GrantedAuthority, Serializable {
 
 
    @ManyToMany(mappedBy = "roles")
-    Collection<UserEntity> users;
+    Collection<UserEntity> users = new ArrayList<>();
 
     public RoleEntity() {
     }
